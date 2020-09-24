@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const compress = require('compression');
 const helmet = require('helmet');
 
-const errorHandler = require('./helpers/errorHandler');
+const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(compress());
 app.use(helmet());
 
 
-app.use(errorHandler)
+app.use(errorHandlerMiddleware)
 
 module.exports = app;
