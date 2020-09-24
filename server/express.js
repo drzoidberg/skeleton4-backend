@@ -5,7 +5,10 @@ const helmet = require('helmet');
 
 const Template = require('../template');
 const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
+const unauthorizedErrorMiddleware = require('./middlewares/unauthorizedError.middleware')
 const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
+const userRoutes = require('./routes/user.routes');
+const authRoutes = require('./routes/auth.routes');
 
 const app = express();
 
@@ -22,6 +25,9 @@ app.use(helmet());
 // setting CORS manually
 app.use(manualCorsMiddleware);
 
+app.use('/', userRoutes);
+app.use('/', authRoutes);
+
 app.get('/', (req, res, next) => {
     res
         .status(200)
@@ -29,6 +35,6 @@ app.get('/', (req, res, next) => {
 });
 
 // it triggers when no other error in the app has triggered
-app.use(errorHandlerMiddleware)
+app.use(unauthorizedErrorMiddleware, errorHandlerMiddleware)
 
 module.exports = app;

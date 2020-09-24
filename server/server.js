@@ -2,7 +2,6 @@ const config = require('../config/config');
 const app = require('./express');
 const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoUri, {
     useNewUrlParser: true,
     useCreateIndex: true,
