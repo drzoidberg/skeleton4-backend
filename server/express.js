@@ -5,7 +5,6 @@ const helmet = require('helmet');
 
 const Template = require('../template');
 const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
-const unauthorizedErrorMiddleware = require('./middlewares/unauthorizedError.middleware')
 const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
 const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
@@ -35,6 +34,6 @@ app.get('/', (req, res, next) => {
 });
 
 // it triggers when no other error in the app has triggered
-app.use(unauthorizedErrorMiddleware, errorHandlerMiddleware)
+app.use(errorHandlerMiddleware)
 
 module.exports = app;
