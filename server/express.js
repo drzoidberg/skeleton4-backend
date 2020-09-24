@@ -3,16 +3,32 @@ const bodyParser = require('body-parser');
 const compress = require('compression');
 const helmet = require('helmet');
 
+const Template = require('../template');
 const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
+const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
 
 const app = express();
 
+// parsing and encoding the body into json format
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// singificantly compress the response body
 app.use(compress());
+
+// securing app by setting various HTTP headers
 app.use(helmet());
 
+// setting CORS manually
+app.use(manualCorsMiddleware);
 
+app.get('/', (req, res, next) => {
+    res
+        .status(200)
+        .send(Template());
+});
+
+// it triggers when no other error in the app has triggered
 app.use(errorHandlerMiddleware)
 
 module.exports = app;

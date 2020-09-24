@@ -4,6 +4,7 @@ const config = {
     env: process.env.NODE_ENV || 'development',
     port: process.env.PROJECT_PORT || 3000,
     jwtSecret: process.env.JWT_SECRET || 'ultraMegaSecretKey',
+    projectTitle: process.env.PROJECT_NAME || 'MERN-skeleton2',
     mongoUri:
         process.env.MONGO_HOST &&
         process.env.IP &&
