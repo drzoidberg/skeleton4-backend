@@ -7,7 +7,6 @@ module.exports = (error, req, res, next) => {
         res.status(400).json({
             error: error.name + ': ' + error.message,
         });
-        console.log(error);
     }
 
     if (res.headerSent) {

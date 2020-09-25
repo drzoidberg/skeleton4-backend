@@ -1,3 +1,5 @@
+require('dotenv').config({ path: '../../.env' });
+
 module.exports = (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', `http://${process.env.HOSTNAME}:${process.env.FRONTEND_PORT}`);
     res.setHeader(
