@@ -20,9 +20,7 @@ router
     .patch(
         authControllers.hasAuthentication,
         authControllers.hasAuthorization,
-        imageUpload.single('avatar'),
-        // imageUpload.array('avatar', 0),
-        // userControllers.optionalAvatar,
+        imageUpload.fields({ name: 'avatar', maxCount: 0}),
         userControllers.update
     )
     .delete(
