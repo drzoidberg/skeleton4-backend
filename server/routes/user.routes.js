@@ -20,7 +20,8 @@ router
     .patch(
         authControllers.hasAuthentication,
         authControllers.hasAuthorization,
-        // imageUpload.array('avatar', 0 ),
+        imageUpload.single('avatar'),
+        // imageUpload.array('avatar', 0),
         // userControllers.optionalAvatar,
         userControllers.update
     )

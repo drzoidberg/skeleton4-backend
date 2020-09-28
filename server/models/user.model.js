@@ -14,6 +14,10 @@ const UserSchema = new mongoose.Schema({
         match: [/.+\@.+\..+/, 'Please fill a valid email address'],
         required: 'Email is required',
     },
+    avatar: {
+        type: String,
+        required: false
+    },
     created: {
         type: Date,
         default: Date.now,
@@ -24,10 +28,6 @@ const UserSchema = new mongoose.Schema({
         required: 'Password is required',
     },
     salt: String,
-    // avatar: {
-    //     type: String,
-    //     required: false
-    // }
 });
 
 UserSchema.virtual('password')
