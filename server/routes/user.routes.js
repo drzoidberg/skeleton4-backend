@@ -2,6 +2,8 @@ const express = require('express');
 
 const userControllers = require('../controllers/user.controllers');
 const authControllers = require('../controllers/auth.controllers');
+// const imageUpload = require('../middlewares/imageUpload.middlewares');
+
 
 const router = express.Router();
 
@@ -15,7 +17,7 @@ router
     .get(
         authControllers.hasAuthentication,
         userControllers.read)
-    .put(
+    .patch(
         authControllers.hasAuthentication,
         authControllers.hasAuthorization,
         userControllers.update
