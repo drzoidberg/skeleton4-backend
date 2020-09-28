@@ -2,7 +2,7 @@ const express = require('express');
 
 const userControllers = require('../controllers/user.controllers');
 const authControllers = require('../controllers/auth.controllers');
-// const imageUpload = require('../middlewares/imageUpload.middlewares');
+const imageUpload = require('../middlewares/imageUpload.middlewares');
 
 
 const router = express.Router();
@@ -20,6 +20,8 @@ router
     .patch(
         authControllers.hasAuthentication,
         authControllers.hasAuthorization,
+        // imageUpload.array('avatar', 0 ),
+        // userControllers.optionalAvatar,
         userControllers.update
     )
     .delete(

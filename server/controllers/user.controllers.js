@@ -22,7 +22,7 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
     try {
-        let users = await User.find().select('name email updated created');
+        let users = await User.find().select('name email avatar updated created');
         res.json(users);
     } catch (error) {
         return res
@@ -65,7 +65,9 @@ const update = async (req, res) => {
         let user = req.profile;
         user = extend(user, req.body);
         user.updated = Date.now();
-        // user.avatar = req.file.path;
+        // if (req.file.path) {
+        //     user.avatar = req.file.path;
+        // }
         await user.save();
         user.hashed_password = undefined;
         user.salt = undefined;
@@ -102,4 +104,5 @@ module.exports = {
     read,
     update,
     remove,
+    // optionalAvatar
 };

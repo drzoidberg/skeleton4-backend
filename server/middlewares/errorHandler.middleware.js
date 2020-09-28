@@ -3,7 +3,7 @@ module.exports = (error, req, res, next) => {
         res.status(401).json({
             error: error.name + ': ' + error.message,
         });
-    } else if (err) {
+    } else if (error) {
         res.status(400).json({
             error: error.name + ': ' + error.message,
         });

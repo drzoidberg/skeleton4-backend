@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const compress = require('compression');
 const helmet = require('helmet');
+const path = require('path');
 
 const Template = require('../template');
 const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
@@ -15,7 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// singificantly compress the response body
+// singificantly compress the response bodies
 app.use(compress());
 
 // securing app by setting various HTTP headers
@@ -23,6 +24,9 @@ app.use(helmet());
 
 // setting CORS manually
 app.use(manualCorsMiddleware);
+
+// serving statically images
+app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
 app.use('/', userRoutes);
 app.use('/', authRoutes);
@@ -33,7 +37,7 @@ app.get('/', (req, res, next) => {
         .send(Template());
 });
 
-// it triggers when no other error in the app has triggered
-app.use(errorHandlerMiddleware)
+// it triggers when no other error in the app has been triggered
+app.use(errorHandlerMiddleware);
 
 module.exports = app;
