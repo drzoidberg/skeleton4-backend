@@ -25,9 +25,9 @@ app.use(helmet());
 // setting CORS manually
 app.use(manualCorsMiddleware);
 
+// SETTING UP ROUTES
 // serving statically images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
-
 app.use('/', userRoutes);
 app.use('/', authRoutes);
 

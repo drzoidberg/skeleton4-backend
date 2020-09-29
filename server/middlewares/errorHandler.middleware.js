@@ -9,7 +9,7 @@ module.exports = (error, req, res, next) => {
         });
     }
 
-    if (res.headerSent) {
+    if (res.headersSent) {
         return next(error);
     }
     res.status(error.code || 500);
