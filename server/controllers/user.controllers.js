@@ -65,8 +65,8 @@ const update = async (req, res) => {
         let user = req.profile;
         user = extend(user, req.body);
         user.updated = Date.now();
-        if (req.files) {
-            user.avatar = req.files[0].path;
+        if (req.file) {
+            user.avatar = req.file.path;
         }
         await user.save();
         user.hashed_password = undefined;
