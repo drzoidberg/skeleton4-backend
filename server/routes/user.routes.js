@@ -31,6 +31,6 @@ router
         userControllers.remove
     );
 
-router.param('uid', userControllers.userById);
+router.param('uid', userControllers.userById);      /* every time uid param is passed, it fires userById controller */
 
 module.exports = router;
