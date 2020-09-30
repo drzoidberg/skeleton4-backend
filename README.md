@@ -19,7 +19,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 
 ## 🔎 App features
- Feature                         | Description
+ Feature| Description
 :------------------------------- |:--------------------------------------------------------------------------------------------
  Sign up                         | Users can register by creating a new account using an email address.
  User list                       | Any visitor can see a list of all registered users.
@@ -69,21 +69,26 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 ## 🚥 API endpoints
 
 ### For Users
- Method                          | Endpoint                                                                                                                   | Authorization | Authentication | Action                          | Expected data samples
-:------------------------------- |:-------------------------------------------------------------------------------------------------------------------------- | :-----------: | :------------: |:------------------------------- |:-------------------------------------------------------
- POST                            | /auth/signin/                                                                                                              |               |       ✓        | Sign in                         | [Go to sample](#post-slash-auth-slash-signin)
- GET                             | /auth/signout/                                                                                                             |               |                | Sign out                        | [Go to sample](#get-slash-auth-slash-signout)
- GET                             | /api/users/                                                                                                                |               |                | Query all users                 | [Go to sample](#get-slash-api-slash-users)
- GET                             | /api/users/:uid                                                                                                            |               |       ✓        | Query info from a specific user | [Go to sample](#get-slash-api-slash-users-slash-uid)
- POST                            | /api/users/                                                                                                                |               |                | Create user                     | [Go to sample](#post-slash-api-slash-users)
- PATCH                           | /api/users/:uid                                                                                                            |       ✓       |       ✓        | Edit user                       | [Go to sample](#patch-slash-api-slash-users-slash-uid)
- DELETE                          | /api/users/:uid                                                                                                            |       ✓       |       ✓        | Remove user                     | [Go to sample](#delete-slash-api-slash-users-slash-uid)
+ Method | Endpoint               | Authorization | Authentication | Action                          | Expected data samples
+:------ |:---------------------- | :-----------: | :------------: |:------------------------------- |:-------------------------------------------------------
+ POST   | /auth/signin/          |               |       ✓        | Sign in                         | [Go to sample](#post-slash-auth-slash-signin)
+ GET    | /auth/signout/         |               |                | Sign out                        | [Go to sample](#get-slash-auth-slash-signout)
+ GET    | /api/users/            |               |                | Query all users                 | [Go to sample](#get-slash-api-slash-users)
+ GET    | /api/users/:uid        |               |       ✓        | Query info from a specific user | [Go to sample](#get-slash-api-slash-users-slash-uid)
+ POST   | /api/users/            |               |                | Create user                     | [Go to sample](#post-slash-api-slash-users)
+ PATCH  | /api/users/:uid        |       ✓       |       ✓        | Edit user                       | [Go to sample](#patch-slash-api-slash-users-slash-uid)
+ DELETE | /api/users/:uid        |       ✓       |       ✓        | Remove user                     | [Go to sample](#delete-slash-api-slash-users-slash-uid)
 
 ### Expected data structure samples
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 **POST** <a id="post-slash-auth-slash-signin">/auth/signin/</a>
-- Available params & query config requests: none
+Available params & query config requests
+
+ Name  | Param | Query
+ :---- | :---- | :-----
+ none  |       |
+
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/auth/signin/
 // SAMPLE REQUEST BODY:
