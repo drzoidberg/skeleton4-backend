@@ -26,7 +26,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  Authentication                  | Registered users can sign-in and sign-out.
  Protected user profile          | Only registered users can view individual user details after signing in.
  Authorized user edit and delete | Only a registered and authenticated user can edit or remove their own user account details.
- Image upload                    | The image path is stored in the db while the actual image is sotred in a project directory
+ Image upload (ready for it)     | The image path is stored in the db while the actual image is sotred in project directory
 
 
 ## 🧪 Used Packages
