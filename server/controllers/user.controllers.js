@@ -2,6 +2,7 @@ const User = require('../models/user.model');
 const extend = require('lodash/extend');
 const errorHandler = require('../helpers/dbErrorHandler');
 
+// create a user
 const create = async (req, res) => {
     const user = new User(req.body);
     try {
@@ -20,8 +21,10 @@ const create = async (req, res) => {
     }
 };
 
+// list all users
 const list = async (req, res) => {
     try {
+        // read right from db picking selected fields
         let users = await User.find().select('name email avatar updated created');
         res.json(users);
     } catch (error) {
@@ -33,8 +36,10 @@ const list = async (req, res) => {
     }
 };
 
+// retrieve all user values
 const userById = async (req, res, next, id) => {
     try {
+        // read right from db all values of user
         let user = await User.findById(id);
         if (!user) {
             return res
@@ -43,6 +48,9 @@ const userById = async (req, res, next, id) => {
                     error: 'User not found',
                 });
         }
+
+        /* storing all user values in 'req.profile' key,
+            making them available for the rest of the controllers */
         req.profile = user;
         next();
     } catch (error) {
@@ -54,23 +62,37 @@ const userById = async (req, res, next, id) => {
     }
 };
 
+// read user
 const read = (req, res, next) => {
+
+    // resetting hashed_password & salt for security purposes
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
+
     return res.json(req.profile);
 };
 
+// update user
 const update = async (req, res) => {
     try {
+        // bringing user data
         let user = req.profile;
+
+        /* Assign string-keyed properties. Next property sources overwrite
+            property assignments of previous sources. */
         user = extend(user, req.body);
         user.updated = Date.now();
+
+        /* if there's an avatar uploading, set it */
         if (req.file) {
             user.avatar = req.file.path;
         }
         await user.save();
+
+        // resetting hashed_password & salt for security purposes
         user.hashed_password = undefined;
         user.salt = undefined;
+
         res.json(user);
     } catch (error) {
         return res
@@ -83,10 +105,14 @@ const update = async (req, res) => {
 
 const remove = async (req, res, next) => {
     try {
+        // bringing user data
         let user = req.profile;
         let deletedUser = await user.remove();
+
+        // resetting hashed_password & salt for security purposes
         deletedUser.hashed_password = undefined;
         deletedUser.salt = undefined;
+
         res.json(deletedUser);
     } catch (error) {
         return res
@@ -104,5 +130,4 @@ module.exports = {
     read,
     update,
     remove,
-    // optionalAvatar
 };

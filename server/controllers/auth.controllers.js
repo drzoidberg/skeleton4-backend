@@ -3,11 +3,11 @@ const jwt = require('jsonwebtoken');
 const expressJwt = require('express-jwt');
 const config = require('../../config/config');
 
+// login
 const signin = async (req, res) => {
     try {
-        let user = await User.findOne({
-            "email": req.body.email
-        });
+        // fetching user
+        let user = await User.findOne({ "email": req.body.email });
 
         if (!user) {
             return res
@@ -17,6 +17,7 @@ const signin = async (req, res) => {
                 });
         };
 
+        // if email/password don't match
         if(!user.authenticate(req.body.password)) {
             return res
                 .status(401)
@@ -25,11 +26,13 @@ const signin = async (req, res) => {
                 });
         };
 
+        // setting & assigning token based on config (secret + userid)
         const token = jwt.sign(
             { _id: user._id },
             config.jwtSecret,
         );
 
+        // setting 'token' cookie
         res.cookie('t', token, { expire: new Date() + (24 * 3600) });
 
         return res
@@ -50,7 +53,10 @@ const signin = async (req, res) => {
     };
 };
 
+// logout
 const signout = (req, res) => {
+
+    // removing cookie
     res.clearCookie('t')
     return res
         .status(200)
@@ -59,15 +65,22 @@ const signout = (req, res) => {
         });
 };
 
+// used for protecting routes that need authentication
+/* it returns 'req.auth' key, containing:
+    { _id: 'user id', iat: 'timestamp from the moment expressJwt was generated' }
+*/
 const hasAuthentication = expressJwt({
     secret: config.jwtSecret,
     userProperty: 'auth',
     algorithms: ['HS256']
 });
 
+// used for protecting routes that need authorization
 const hasAuthorization = (req, res, next) => {
     const authorized =
-        req.profile && req.auth && req.profile._id == req.auth._id
+        req.profile &&                                  // populated by userById in user.controller
+        req.auth &&                                     // populated by hasAuthentication here, in auth.hasAuthentication. Proves that user has token
+        req.profile._id == req.auth._id                 // the userid logged in & and the userid that has the current token match
 
     if(!(authorized)) {
         return res
