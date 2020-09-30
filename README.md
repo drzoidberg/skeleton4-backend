@@ -83,7 +83,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 **POST** <a id="post-slash-auth-slash-signin">/auth/signin/</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
@@ -114,7 +114,7 @@ Available params & query config requests
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 **GET** <a id="get-slash-auth-slash-signout">/auth/signout/</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
@@ -137,7 +137,7 @@ Available params & query config requests
 
 
 **GET** <a id="get-slash-api-slash-users">/api/users/</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
@@ -166,13 +166,13 @@ Available params & query config requests
 
 
 **GET** <a id="get-slash-api-slash-users-slash-uid">/api/users/:uid</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
  uid    | ✓     |        | *ObjectId* format, ie: 5f5a3bf43363c988af74c221
 
-- Token must be attached in Authorization Headers
+*Token must be attached in Authorization Headers*
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/api/users/5f5a3bf43363c988af74c221
 // SAMPLE REQUEST BODY:
@@ -194,7 +194,7 @@ Available params & query config requests
 
 
 **POST** <a id="post-slash-api-slash-users">/api/users/</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
@@ -220,13 +220,13 @@ Available params & query config requests
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
 **PATCH** <a id="patch-slash-api-slash-users-slash-uid">/api/users/:uid</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
  uid    | ✓     |        | *ObjectId* format, ie: 5f5a3bf43363c988af74c221
 
-- Token must be attached in Authorization Headers
+*Token must be attached in Authorization Headers*
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/api/users/5f5a3bf43363c988af74c221
 // SAMPLE REQUEST BODY:
@@ -255,13 +255,13 @@ Available params & query config requests
 
 
 **DELETE** <a id="delete-slash-api-slash-users-slash-uid">/api/users/:uid</a>
-Available params & query config requests
+- Available params & query config requests
 
  Name   | Param | Query  | Allowed values
  :----- | :---: | :----: | :------------
  uid    | ✓     |        | *ObjectId* format, ie: 5f5a3bf43363c988af74c221
 
-- Token must be attached in Authorization Headers
+*Token must be attached in Authorization Headers*
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/api/users/5f5a3bf43363c988af74c221
 // SAMPLE REQUEST BODY:
