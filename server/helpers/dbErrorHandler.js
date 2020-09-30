@@ -1,7 +1,10 @@
+
+// mongoose error handling
 const getErrorMessage = (err) => {
     let message = '';
     if (err.code) {
-        switch (err.code) {
+        switch (err.code) {                                     /* 11000 & 11001 errors are related to duplicate keys.
+                                                                    In other words: data unique field already exsists */
             case 11000:
             case 11001:
                 message = getUniqueErrorMessage(err);
@@ -19,6 +22,7 @@ const getErrorMessage = (err) => {
     return message;
 };
 
+// extracting & formating the error message
 const getUniqueErrorMessage = (err) => {
     let output;
 
