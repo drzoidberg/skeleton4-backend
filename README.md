@@ -3,7 +3,7 @@
 ### Table of Contents
 
 - [Description](#-description)
-- [It has](#-it-has)
+- [App features](#-app-features)
 - [Used Packages](#-used-Packages)
 - [Installation](#-installation)
 - [Usage](#-usage)
@@ -18,62 +18,66 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 
 
-## 🔎 It has
-- Sign up: Users can register by creating a new account using an email address.
-- User list: Any visitor can see a list of all registered users.
-- Authentication: Registered users can sign-in and sign-out.
-- Protected user profile: Only registered users can view individual user details after signing in.
-- Authorized user edit and delete: Only a registered and authenticated user can edit or remove their own user account details.
+## 🔎 App features
+ Feature                         | Description
+:------------------------------- |:--------------------------------------------------------------------------------------------
+ Sign up                         | Users can register by creating a new account using an email address.
+ User list                       | Any visitor can see a list of all registered users.
+ Authentication                  | Registered users can sign-in and sign-out.
+ Protected user profile          | Only registered users can view individual user details after signing in.
+ Authorized user edit and delete | Only a registered and authenticated user can edit or remove their own user account details.
+ Image upload                    | The image path is stored in the db while the actual image is sotred in a project directory
 
 
 ## 🧪 Used Packages
- Package      | Description
-:------------ |:--------------------------------------------------------------------------------------------------------------------------
- body-parser  | A request body-parsing middleware used for simplifing browser-server communication by exchanging JSON in the request body
- compression  | Compression middleware used for trying to compress response bodies for all requests that traverse the middleware
- dotenv       | A zero-dependency module that loads environment variables from a .env file into process.env
- express      | A server-side web framework that provides a layer of web app features like HTTP utility methods & middleware functionality
- express-jwt  | A module that provides Express middleware for validating JWTs (JSON Web Tokens) through the jsonwebtoken module
- helmet       | A collection of middleware functions used for helping secure Express apps by setting various HTTP headers
- jsonwebtoken | A module that implements JSON Web Token in nodeJS
- lodash       | A library that provides utility functions for common programming tasks
- mongodb      | The official MongoDB driver for Node.js
- mongoose     | An Object Data Modeling (ODM) library for MongoDB and NodeJS
- nodemon      | A package used for hot reloading the server each time a change is detected
- multer       | A middleware for handling `multipart/form-data`
- nodemon      | A simple monitor script for use during development of a node.js app.
- uuid         | A module that creates and translates standard UUIDs
+ Package                         | Description
+:------------------------------- |:--------------------------------------------------------------------------------------------------------------------------
+ body-parser                     | A request body-parsing middleware used for simplifing browser-server communication by exchanging JSON in the request body
+ compression                     | Compression middleware used for trying to compress response bodies for all requests that traverse the middleware
+ dotenv                          | A zero-dependency module that loads environment variables from a .env file into process.env
+ express                         | A server-side web framework that provides a layer of web app features like HTTP utility methods & middleware functionality
+ express-jwt                     | A module that provides Express middleware for validating JWTs (JSON Web Tokens) through the jsonwebtoken module
+ helmet                          | A collection of middleware functions used for helping secure Express apps by setting various HTTP headers
+ jsonwebtoken                    | A module that implements JSON Web Token in nodeJS
+ lodash                          | A library that provides utility functions for common programming tasks
+ mongodb                         | The official MongoDB driver for Node.js
+ mongoose                        | An Object Data Modeling (ODM) library for MongoDB and NodeJS
+ nodemon                         | A package used for hot reloading the server each time a change is detected
+ multer                          | A middleware for handling `multipart/form-data`
+ nodemon                         | A simple monitor script for use during development of a node.js app.
+ uuid                            | A module that creates and translates standard UUIDs
 
 ## 🛠 Installation
 
 Use the node package manager [npm](https://npmjs.com/) to install mern-skeleton2-backend.
 
 ```javascript
-// a comment
+// use npm or yarn package managers
 cd ./mern-skeleton2-backend
-npm i
+yarn install
 ```
 
 ## 🚀 Usage
 
 ```javascript
-// a comment
-npm start
+// use npm or yarn package managers
+// for now, only the 'development' script is implemented
+yarn development
 ```
 Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/downloads/) for test the endpoints
 
 ## 🚥 API endpoints
 
 ### For Users
- Method       | Endpoint         | Authorization | Authentication | Action                          | Expected data samples
-:------------ |:---------------- | :-----------: | :------------: | :-------------------------------| :--------------------------------------------------------
- POST         | /auth/signin/    |               |       ✓        | Sign in                         | [Go to sample](#post-slash-auth-slash-signin)
- GET          | /auth/signout/   |               |                | Sign out                        | [Go to sample](#get-slash-auth-slash-signout)
- GET          | /api/users/      |               |                | Query all users                 | [Go to sample](#get-slash-api-slash-users)
- GET          | /api/users/:uid  |               |       ✓        | Query info from a specific user | [Go to sample](#get-slash-api-slash-users-slash-uid)
- POST         | /api/users/      |               |                | Create user                     | [Go to sample](#post-slash-api-slash-users)
- PATCH        | /api/users/:uid  |       ✓       |       ✓        | Edit user                       | [Go to sample](#patch-slash-api-slash-users-slash-uid)
- DELETE       | /api/users/:uid  |       ✓       |       ✓        | Remove user                     | [Go to sample](#delete-slash-api-slash-users-slash-uid)
+ Method                          | Endpoint                                                                                                                   | Authorization | Authentication | Action                          | Expected data samples
+:------------------------------- |:-------------------------------------------------------------------------------------------------------------------------- | :-----------: | :------------: |:------------------------------- |:-------------------------------------------------------
+ POST                            | /auth/signin/                                                                                                              |               |       ✓        | Sign in                         | [Go to sample](#post-slash-auth-slash-signin)
+ GET                             | /auth/signout/                                                                                                             |               |                | Sign out                        | [Go to sample](#get-slash-auth-slash-signout)
+ GET                             | /api/users/                                                                                                                |               |                | Query all users                 | [Go to sample](#get-slash-api-slash-users)
+ GET                             | /api/users/:uid                                                                                                            |               |       ✓        | Query info from a specific user | [Go to sample](#get-slash-api-slash-users-slash-uid)
+ POST                            | /api/users/                                                                                                                |               |                | Create user                     | [Go to sample](#post-slash-api-slash-users)
+ PATCH                           | /api/users/:uid                                                                                                            |       ✓       |       ✓        | Edit user                       | [Go to sample](#patch-slash-api-slash-users-slash-uid)
+ DELETE                          | /api/users/:uid                                                                                                            |       ✓       |       ✓        | Remove user                     | [Go to sample](#delete-slash-api-slash-users-slash-uid)
 
 ### Expected data structure samples
 <!-- ------------------------------------------------------------------------------------------------------ -->
