@@ -6,9 +6,9 @@
 - [App features](#-app-features)
 - [Used Packages](#-used-Packages)
 - [App Data Model](#-app-data-model)
+- [API endpoints](#-api-endpoints)
 - [Installation](#-installation)
 - [Usage](#-usage)
-- [API endpoints](#-aPI-endpoints)
 - [Roadmap](#-Roadmap)
 - [License](#license)
 
@@ -62,25 +62,6 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  created         | number (Date.now()) |        |
  updated         | number (Date.now()) |        |
 
-
-## 🛠 Installation
-
-Use the node package manager [npm](https://npmjs.com/) to install mern-skeleton2-backend.
-
-```javascript
-// use npm or yarn package managers
-cd ./mern-skeleton2-backend
-yarn install
-```
-
-## 🚀 Usage
-
-```javascript
-// use npm or yarn package managers
-// for now, only the 'development' script is implemented
-yarn development
-```
-Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/downloads/) for test the endpoints
 
 ## 🚥 API endpoints
 
@@ -295,6 +276,27 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
   "updated": "2020-09-10T14:48:20.178Z"
 }
 ```
+
+
+## 🛠 Installation
+
+Use the node package manager [npm](https://npmjs.com/) to install mern-skeleton2-backend.
+
+```javascript
+// use npm or yarn package managers
+cd ./mern-skeleton2-backend
+yarn install
+```
+
+## 🚀 Usage
+
+```javascript
+// use npm or yarn package managers
+// for now, only the 'development' script is implemented
+yarn development
+```
+Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www.postman.com/downloads/) for test the endpoints
+
 
 ## License
 Project done using as a guideline the book [Full Stack React Projects, Second Edition](https://www.packtpub.com/product/full-stack-react-projects-second-edition/9781839215414)
