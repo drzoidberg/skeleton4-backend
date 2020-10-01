@@ -101,7 +101,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **POST** <a id="post-slash-auth-slash-signin">/auth/signin/</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  *none* |       |        |
 
@@ -132,7 +132,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **GET** <a id="get-slash-auth-slash-signout">/auth/signout/</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  *none* |       |        |
 
@@ -155,7 +155,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **GET** <a id="get-slash-api-slash-users">/api/users/</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  *none* |       |        |
 
@@ -184,7 +184,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **GET** <a id="get-slash-api-slash-users-slash-uid">/api/users/:uid</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  uid    | ✓     |        | *ObjectId* format, ie: 5f5a3bf43363c988af74c221
 
@@ -212,7 +212,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **POST** <a id="post-slash-api-slash-users">/api/users/</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  *none* |       |        |
 
@@ -238,7 +238,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **PATCH** <a id="patch-slash-api-slash-users-slash-uid">/api/users/:uid</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  uid    | ✓     |        | *ObjectId* format, ie: 5f5a3bf43363c988af74c221
 
@@ -273,7 +273,7 @@ Use a something like [Insomnia](https://insomnia.rest/) or [Postman](https://www
 **DELETE** <a id="delete-slash-api-slash-users-slash-uid">/api/users/:uid</a>
 - Available params & query config requests
 
- Name   | Param | Query  | Allowed values
+ Name   | Param | Query  | Expected values
  :----- | :---: | :----: | :------------
  uid    | ✓     |        | *ObjectId* format, ie: 5f5a3bf43363c988af74c221
 
