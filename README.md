@@ -54,9 +54,9 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 ### User
  Name            | Type                | Unique | Required
 :--------------- |:------------------- | :----: | :------:
- name            | string              |        |    ✔️
- email           | string              |   ✔️    |    ✔️
- hashed_password | string              |        |    ✔️
+ name            | string              |        |    ✓
+ email           | string              |   ✓    |    ✓
+ hashed_password | string              |        |    ✓
  avatar          | string              |        |
  salt            | string              |        |
  created         | number (Date.now()) |        |
