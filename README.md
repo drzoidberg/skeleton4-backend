@@ -58,9 +58,9 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  email           | string              |   ✔️    |    ✔️
  hashed_password | string              |        |    ✔️
  avatar          | string              |        |
+ salt            | string              |        |
  created         | number (Date.now()) |        |
  updated         | number (Date.now()) |        |
- salt            | string              |        |
 
 
 ## 🛠 Installation
