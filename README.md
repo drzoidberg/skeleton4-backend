@@ -5,6 +5,7 @@
 - [Description](#-description)
 - [App features](#-app-features)
 - [Used Packages](#-used-Packages)
+- [App Data Model](#-app-data-model)
 - [Installation](#-installation)
 - [Usage](#-usage)
 - [API endpoints](#-aPI-endpoints)
@@ -46,6 +47,21 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  multer                          | A middleware for handling `multipart/form-data`
  nodemon                         | A simple monitor script for use during development of a node.js app.
  uuid                            | A module that creates and translates standard UUIDs
+
+
+## 🗂 App Data Model
+
+### User
+ Name            | Type                | Unique | Required
+:--------------- |:------------------- | :----: | :------:
+ name            | string              |        |    ✔️
+ email           | string              |   ✔️    |    ✔️
+ hashed_password | string              |        |    ✔️
+ avatar          | string              |        |
+ created         | number (Date.now()) |        |
+ updated         | number (Date.now()) |        |
+ salt            | string              |        |
+
 
 ## 🛠 Installation
 
