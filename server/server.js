@@ -11,13 +11,13 @@ mongoose.connect(config.mongoUri, {
 
 /* handling db connection error */
 mongoose.connection.on('error', () => {
-    throw new Error(`Unable to connect to database: ${config.mongoUri}`);
+    throw new Error(`Server error. Unable to connect to database: ${config.mongoUri}`);
 });
 
 /* launching the server */
 app.listen(config.port, (error) => {
     if (error) {
-        console.log(error);
+        console.log(`Server error. Trying to listen to port ${config.port}: ${error}`);
     }
     console.info(`Server started on port ${config.port}`);
 });

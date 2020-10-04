@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
             return res
                 .status(401)
                 .json({
-                    error: 'User not found'
+                    error: `User not found`
                 });
         };
 
@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
             return res
                 .status(401)
                 .json({
-                    error: 'Email and password do not match'
+                    error: `Email and password don't match`
                 });
         };
 
@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
         return res
             .status(401)
             .json({
-                error: 'Could not sign in'
+                error: `Couldn't sign in`
             });
     };
 };

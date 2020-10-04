@@ -9,7 +9,7 @@ module.exports = async (req, res, next, id) => {
             return res
                 .status(400)
                 .json({
-                    error: 'User not found',
+                    error: `User not found`,
                 });
         }
 
@@ -21,7 +21,7 @@ module.exports = async (req, res, next, id) => {
         return res
             .status(400)
             .json({
-                error: 'Could not retrieve user',
+                error: `Could not retrieve user`,
             });
     }
 };

@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         return res.
             status(200)
             .json({
-                message: 'Successfully signed up!',
+                message: `Successfully signed up`,
             });
     } catch (err) {
         return res

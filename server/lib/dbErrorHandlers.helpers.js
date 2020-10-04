@@ -10,7 +10,7 @@ const getErrorMessage = (err) => {
                 message = getUniqueErrorMessage(err);
                 break;
             default:
-                message = 'Something went wrong';
+                message = `Something went wrong`;
         }
     } else {
         for (let errorName in err.errors) {
@@ -36,7 +36,7 @@ const getUniqueErrorMessage = (err) => {
             fieldName.slice(1) +
             ' already exists';
     } catch (ex) {
-        output = 'Unique field already exists';
+        output = `Unique field already exists`;
     }
     return output;
 };

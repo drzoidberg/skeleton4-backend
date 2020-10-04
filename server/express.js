@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const compress = require('compression');
 const helmet = require('helmet');
+const morgan = require('morgan');
 const path = require('path');
 
 const Template = require('../template');
@@ -21,6 +22,9 @@ app.use(compress());
 
 // securing app by setting various HTTP headers
 app.use(helmet());
+
+// HTTP request logger. Brings extra info to each http request is performed
+app.use(morgan('dev'));
 
 // setting CORS manually
 app.use(manualCorsMiddleware);

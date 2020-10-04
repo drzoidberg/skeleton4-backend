@@ -5,6 +5,9 @@ const config = {
     port: process.env.PROJECT_PORT || 3000,
     jwtSecret: process.env.JWT_SECRET || 'ultraMegaSecretKey',
     projectTitle: process.env.PROJECT_NAME || 'MERN-skeleton2',
+                                /* apply custom db config only if
+                                    ALL .env fields are filled,
+                                    otherwise use a default mongoUri */
     mongoUri:
         process.env.MONGO_HOST &&
         process.env.IP &&
