@@ -1,5 +1,5 @@
 const User = require('../../models/user.model');
-const errorHandler = require('../../helpers/dbErrorHandlers.helpers');
+const errorHandler = require('../../lib/dbErrorHandlers.helpers');
 
 // create a user
 module.exports = async (req, res) => {

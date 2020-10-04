@@ -1,4 +1,4 @@
-const errorHandler = require('../../helpers/dbErrorHandlers.helpers');
+const errorHandler = require('../../lib/dbErrorHandlers.helpers');
 
 // delete user
 module.exports = async (req, res, next) => {

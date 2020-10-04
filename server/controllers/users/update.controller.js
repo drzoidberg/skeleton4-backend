@@ -1,5 +1,5 @@
 const extend = require('lodash/extend');
-const errorHandler = require('../../helpers/dbErrorHandlers.helpers');
+const errorHandler = require('../../lib/dbErrorHandlers.helpers');
 
 // update user
 module.exports = async (req, res) => {
