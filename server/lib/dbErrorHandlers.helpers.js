@@ -1,4 +1,3 @@
-
 // mongoose error handling
 const getErrorMessage = (err) => {
     let message = '';

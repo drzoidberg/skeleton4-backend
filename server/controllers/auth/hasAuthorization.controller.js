@@ -1,4 +1,5 @@
 // used for protecting routes that need authorization
+
 module.exports = (req, res, next) => {
     const authorized =
         req.profile &&                                  // populated by userById in user.controller

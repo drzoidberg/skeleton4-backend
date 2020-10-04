@@ -1,6 +1,6 @@
 const expressJwt = require('express-jwt');
-const config = require('../../../config/config');
 
+const config = require('../../../config/config');
 
 // used for protecting routes that need authentication
 /* it returns 'req.auth' key, containing:

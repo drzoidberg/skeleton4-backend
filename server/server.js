@@ -1,6 +1,7 @@
+const mongoose = require('mongoose');
+
 const config = require('../config/config');
 const app = require('./express');
-const mongoose = require('mongoose');
 
 /* configuring db connection */
 mongoose.connect(config.mongoUri, {

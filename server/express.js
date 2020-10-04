@@ -23,15 +23,16 @@ app.use(compress());
 // securing app by setting various HTTP headers
 app.use(helmet());
 
-// HTTP request logger. Brings extra info to each http request is performed
+// HTTP request logger. Brings extra info to each http request when it's performed
 app.use(morgan('dev'));
 
 // setting CORS manually
 app.use(manualCorsMiddleware);
 
-// SETTING UP ROUTES
 // serving statically images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
+
+// SETTING UP ROUTES
 app.use('/', userRoutes);
 app.use('/', authRoutes);
 
