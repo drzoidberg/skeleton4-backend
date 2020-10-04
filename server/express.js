@@ -5,10 +5,10 @@ const helmet = require('helmet');
 const path = require('path');
 
 const Template = require('../template');
-const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
+const unauthorizedErrorMiddleware = require('./middlewares/unauthorizedError.middleware');
 const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
-const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
 
 const app = express();
 
@@ -38,6 +38,6 @@ app.get('/', (req, res, next) => {
 });
 
 // it triggers when no other error in the app has been triggered
-app.use(errorHandlerMiddleware);
+app.use(unauthorizedErrorMiddleware);
 
 module.exports = app;

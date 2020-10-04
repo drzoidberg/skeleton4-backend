@@ -1,36 +1,43 @@
 const express = require('express');
 
-const userControllers = require('../controllers/user.controllers');
-const authControllers = require('../controllers/auth.controllers');
-const imageUpload = require('../middlewares/imageUpload.middlewares');
+const {
+    createController,
+    listController,
+    readController,
+    removeController,
+    updateController,
+    userByIdController
+} = require('../controllers/users')
+const { hasAuthenticationController, hasAuthorizationController } = require('../controllers/auth');
+const imageUploadMiddleware = require('../middlewares/imageUpload.middleware');
 
 
 const router = express.Router();
 
 router
     .route('/api/users')
-    .get(userControllers.list)
-    .post(userControllers.create);
+    .get(listController)
+    .post(createController);
 
 router
     .route('/api/users/:uid')
     .get(
-        authControllers.hasAuthentication,
-        userControllers.read)
+        hasAuthenticationController,
+        readController)
     .patch(
-        authControllers.hasAuthentication,
-        authControllers.hasAuthorization,
-        imageUpload.single('avatar'),
+        hasAuthenticationController,
+        hasAuthorizationController,
+        imageUploadMiddleware.single('avatar'),
         // imageUpload.array('avatar', 1),
         // imageUpload.fields([{ name: 'avatar', maxCount: 0 }]),
-        userControllers.update
+        updateController
     )
     .delete(
-        authControllers.hasAuthentication,
-        authControllers.hasAuthorization,
-        userControllers.remove
+        hasAuthenticationController,
+        hasAuthorizationController,
+        removeController
     );
 
-router.param('uid', userControllers.userById);      /* every time uid param is passed, it fires userById controller */
+router.param('uid', userByIdController);      /* every time uid param is passed, it fires userById controller */
 
 module.exports = router;
