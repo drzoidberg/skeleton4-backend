@@ -4,6 +4,6 @@ module.exports = {
     // googleLoginController: require('./googleLogin.controller'),
     // requireSigninController: require('./requireSignin.controller'),
     // resetPasswordController: require('./resetPassword.controller'),
-    // signinController: require('./signin.controller'),
+    signinController: require('./signin.controller'),
     signupController: require('./signup.controller'),
 }

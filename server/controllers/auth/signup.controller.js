@@ -12,9 +12,9 @@ module.exports = (req, res) => {
     User.findOne({ email: email }).exec((err, user) => {
         if (user) {
             return res
-                .status(400)
+                .status(401)
                 .json({
-                    error: 'Server error: The email is taken',
+                    error: 'The email is taken',
             });
         }
     });
