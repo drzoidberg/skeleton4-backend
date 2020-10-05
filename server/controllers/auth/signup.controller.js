@@ -6,12 +6,6 @@ const User = require('../../models/user.model');
 
 sgMail.setApiKey(config.sendgridApiKey);
 
-// module.exports = (req, res) => {
-//     return res.status(200).json({
-//         message: 'dins!'
-//     })
-// }
-
 module.exports = (req, res) => {
     const { name, email, password } = req.body;
 
@@ -31,29 +25,31 @@ module.exports = (req, res) => {
         { expiresIn: '10m' }
     )
 
+        console.log(config.sendgridEmailFrom);
+
     const emailData = {
-        from: process.env.EMAIL_FROM,
+        from: config.sendgridEmailFrom,
         to: email,
         subject: `Account activation link`,
         html: `
             <h1>Please use the following link to activate your account</h1>
-            <a href="${process.env.CLIENT_URL}/auth/activate/${token}">${process.env.CLIENT_URL}/auth/activate/${token}</a>
+            <a href="${config.clientUrl}/auth/activate/${token}">${config.clientUrl}/auth/activate/${token}</a>
             <hr/>
             <p>This email may contain sensitive information</p>
-            <p>${process.env.CLIENT_URL}</p>
+            <p>${config.clientUrl}</p>
         `
     }
 
     sgMail
         .send(emailData)
         .then(sent => {
-            console.log('email sent');
+            // console.log('email sent');
             return res.json({
-                message: `An email has been sent to ${email}. Please Follow the instructions to activate your account`
+                message: `An email has been sent to ${email}. Please Follow the instructions to activate your account.`
             })
         })
         .catch(err => {
-            console.log('Server error: Signup email send failed\n', err);
+            // console.log('Server error: Signup email send failed\n', err.response.body);
             return res.json({
                 error: err.message
             })
