@@ -4,7 +4,7 @@
     "description": "",
     "main": "server/server.js",
     "scripts": {
-        "development": "nodemon"
+        "development": "nodemon -r dotenv/config"
     },
     "keywords": [],
     "author": "Jorge Vicens Valor",

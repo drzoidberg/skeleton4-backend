@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '../../.env' });
+// require('dotenv').config({ path: '../../.env' });
 
 // setting http headers for allowing only a different origin: the one specified in the .env file
 module.exports = (req, res, next) => {
