@@ -1,18 +1,20 @@
 const User = require('../../models/user.model');
 
 module.exports = (req, res) => {
-    // console.log('UPDATE USER - req.user', req.user, 'UPDATE DATA', req.body);
-    const { name, password } = req.body;
-
+    const { name, password } = req.body;                                    /* email is not allowed to update due to security issues */
+                                                                            /* req.user is added in the requireSignin middleware,
+                                                                                so now we have access to the user id */
     User.findOne({ _id: req.user._id }, (err, user) => {
         if (err || !user) {
             return res.status(400).json({
-                error: 'User not found'
+                updateError: 'User not found'
             });
         }
+                                                                            /* we have to perform the validations
+                                                                                done in other endpoints */
         if (!name) {
             return res.status(400).json({
-                error: 'Name is required'
+                updateError: 'Name is required'
             });
         } else {
             user.name = name;
@@ -21,7 +23,7 @@ module.exports = (req, res) => {
         if (password) {
             if (password.length < 6) {
                 return res.status(400).json({
-                    error: 'Password should be min 6 characters long'
+                    updateError: 'Password must be at least 6 characters long'
                 });
             } else {
                 user.password = password;
@@ -30,12 +32,12 @@ module.exports = (req, res) => {
 
         user.save((err, updatedUser) => {
             if (err) {
-                console.log('USER UPDATE ERROR', err);
+                // console.log('user update error', err);
                 return res.status(400).json({
-                    error: 'User update failed'
+                    updateError: 'User update failed'
                 });
             }
-            updatedUser.hashed_password = undefined;
+            updatedUser.hashed_password = undefined;                        /* resetting hashed_password & salt in the response */
             updatedUser.salt = undefined;
             res.json(updatedUser);
         });

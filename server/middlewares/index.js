@@ -1,5 +1,5 @@
 module.exports = {
-    adminMiddleware: require('./admin.middleware'),
+    isAdminMiddleware: require('./isAdmin.middleware'),
     imageUploadMiddleware: require('./imageUpload.middleware'),
     manualCorsMiddleware: require('./manualCors.middleware'),
     requireSigninMiddleware: require('./requireSignin.middleware'),
