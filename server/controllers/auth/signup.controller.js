@@ -6,6 +6,12 @@ const User = require('../../models/user.model');
 
 sgMail.setApiKey(config.sendgridApiKey);
 
+// module.exports = (req, res) => {
+//     return res.status(200).json({
+//         message: 'dins!'
+//     })
+// }
+
 module.exports = (req, res) => {
     const { name, email, password } = req.body;
 
@@ -21,7 +27,7 @@ module.exports = (req, res) => {
 
     const token = jwt.sign(
         { name, email, password },
-        process.env.JWT_ACCOUNT_ACTIVATION,
+        config.jwtAccountActivation,
         { expiresIn: '10m' }
     )
 
@@ -41,13 +47,13 @@ module.exports = (req, res) => {
     sgMail
         .send(emailData)
         .then(sent => {
-            // console.log('email sent');
+            console.log('email sent');
             return res.json({
                 message: `An email has been sent to ${email}. Please Follow the instructions to activate your account`
             })
         })
         .catch(err => {
-            // console.log('signup email send failed', err);
+            console.log('Server error: Signup email send failed\n', err);
             return res.json({
                 error: err.message
             })

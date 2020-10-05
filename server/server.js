@@ -16,9 +16,9 @@ mongoose.connection.on('error', () => {
 });
 
 /* launching the server */
-app.listen(config.port, (error) => {
+app.listen(config.projectPort, (error) => {
     if (error) {
-        console.log(`Server error. Trying to listen to port ${config.port}: ${error}`);
+        console.log(`Server error. Trying to listen to port ${config.projectPort}: ${error}`);
     }
-    console.info(`Server started on port ${config.port}`);
+    console.info(`Server started on port ${config.projectPort}`);
 });

@@ -1,6 +1,6 @@
-const express = require('express');
 const bodyParser = require('body-parser');
 const compress = require('compression');
+const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
