@@ -1,7 +1,6 @@
 const express = require('express');
 
 const {
-    userRemoveValidator,
     userUpdateValidator
 } = require('../validators/');
 
@@ -27,32 +26,33 @@ router.get('/user/:id',
     readController
 );
 
-/* implement */
 router.get('/users/',
     isAuthenticatedMiddleware,
     listController
 );
 
-/* implement image upload, isAuthorizedMiddleware */
+/* implement imageUploadMiddleware, isAuthorizedMiddleware */
 router.put('/user/update',
     isAuthenticatedMiddleware,
-    isAuthorizedMiddleware,
+    // isAuthorizedMiddleware,
     // imageUploadMiddleware.single('avatar'),
     userUpdateValidator,
     runValidationsMiddleware,
     updateController
 );
 
-/* implement, removeController, userRemoveValidator */
-router.get('/users/',
+/* implement removeController, isAuthorizedMiddleware */
+router.delete('/users/',
     isAuthenticatedMiddleware,
-    isAuthorizedMiddleware,
+    // isAuthorizedMiddleware,
     removeController
 );
 
 router.put('/admin/update',
     isAuthenticatedMiddleware,
     isAdminMiddleware,
+    userUpdateValidator,
+    runValidationsMiddleware,
     updateController
 );
 
