@@ -9,7 +9,7 @@ const Template = require('../template');
 const unauthorizedErrorMiddleware = require('./middlewares/unauthorizedError.middleware');
 const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
 const authRoutes = require('./routes/auth.routes');
-const userRoutes = require('./routes/user.routes');
+// const userRoutes = require('./routes/user.routes');
 
 const app = express();
 
@@ -32,9 +32,9 @@ app.use(manualCorsMiddleware);
 // serving statically images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
-// SETTING UP ROUTES
-app.use('/', userRoutes);
-app.use('/', authRoutes);
+// setting up routes
+// app.use('/', userRoutes);
+// app.use('/api', authRoutes);
 
 app.get('/', (req, res, next) => {
     res

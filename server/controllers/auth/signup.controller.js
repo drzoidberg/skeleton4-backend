@@ -1,16 +1,20 @@
 const jwt = require('jsonwebtoken');
 const sgMail = require('@sendgrid/mail');
 
+const config = require('../../../config/config');
 const User = require('../../models/user.model');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+sgMail.setApiKey(config.sendgridApiKey);
 
 module.exports = (req, res) => {
     const { name, email, password } = req.body;
 
     User.findOne({ email: email }).exec((err, user) => {
         if (user) {
-            return res.status(400).json({
-                error: 'Email is taken',
+            return res
+                .status(400)
+                .json({
+                    error: 'Server error: The email is taken',
             });
         }
     });
@@ -18,9 +22,7 @@ module.exports = (req, res) => {
     const token = jwt.sign(
         { name, email, password },
         process.env.JWT_ACCOUNT_ACTIVATION,
-        {
-            expiresIn: '10m'
-        }
+        { expiresIn: '10m' }
     )
 
     const emailData = {
@@ -28,11 +30,11 @@ module.exports = (req, res) => {
         to: email,
         subject: `Account activation link`,
         html: `
-        <h1>Please use the following link to activate your account</h1>
-        <a href="${process.env.CLIENT_URL}/auth/activate/${token}">${process.env.CLIENT_URL}/auth/activate/${token}</a>
-        <hr/>
-        <p>This email may contain sensitive information</p>
-        <p>${process.env.CLIENT_URL}</p>
+            <h1>Please use the following link to activate your account</h1>
+            <a href="${process.env.CLIENT_URL}/auth/activate/${token}">${process.env.CLIENT_URL}/auth/activate/${token}</a>
+            <hr/>
+            <p>This email may contain sensitive information</p>
+            <p>${process.env.CLIENT_URL}</p>
         `
     }
 
@@ -41,7 +43,7 @@ module.exports = (req, res) => {
         .then(sent => {
             // console.log('email sent');
             return res.json({
-                message: `Email has been sent to ${email}. Follow the instructions to activate your account`
+                message: `An email has been sent to ${email}. Please Follow the instructions to activate your account`
             })
         })
         .catch(err => {

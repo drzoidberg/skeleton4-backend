@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+require('dotenv').config() /* enable reading .env files */
 const config = require('../config/config');
 const app = require('./express');
 
