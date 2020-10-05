@@ -12,7 +12,7 @@ module.exports = (req, res) => {
     User.findOne({ email: email }).exec((err, user) => {
         if (user) {
             return res
-                .status(401)
+                .status(400)
                 .json({
                     signupError: 'The email is taken',
             });
@@ -43,7 +43,7 @@ module.exports = (req, res) => {
         .then(sent => {
             // console.log('email sent');
             return res.json({
-                message: `An email has been sent to ${email}. Please Follow the instructions to activate your account.`
+                message: `An email has been sent to ${email}. Please Follow the instructions to activate your account`
             })
         })
         .catch(err => {

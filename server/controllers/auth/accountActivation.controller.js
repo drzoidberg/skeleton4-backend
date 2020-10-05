@@ -9,7 +9,7 @@ module.exports = (req, res) => {
     if (token) {
         jwt.verify(token, config.jwtAccountActivation, function(err, decoded) {
             if(err) {
-                console.log('accountActivation error. Verifying jwt in account', err);
+                // console.log('accountActivation error. Verifying jwt in account', err);
                 return res
                     .status(401)
                     .json({

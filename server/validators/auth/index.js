@@ -1,5 +1,5 @@
 module.exports = {
-    // forgotPasswordValidator: require('./forgotPassword.validator'),
+    forgotPasswordValidator: require('./forgotPassword.validator'),
     // resetPasswordValidator: require('./resetPassword.validator'),
     userSignupValidator: require('./userSignup.validator'),
     userSigninValidator: require('./userSignin.validator'),

@@ -3,13 +3,13 @@ const express = require('express');
 const {
     userSignupValidator,
     userSigninValidator,
-    // forgotPasswordValidator,
+    forgotPasswordValidator,
     // resetPasswordValidator,
 } = require('../validators/auth');
 
 const {
     accountActivationController,
-    // forgotPasswordController,
+    forgotPasswordController,
     // googleLoginController,
     // requireSigninController,
     // resetPasswordController,
@@ -35,6 +35,12 @@ router.post('/signin',
 
 router.post('/account-activation',
     accountActivationController);
+
+router.put('/forgot-password',
+    forgotPasswordValidator,
+    runValidationMiddleware,
+    forgotPasswordController
+);
 
 
 module.exports = router;

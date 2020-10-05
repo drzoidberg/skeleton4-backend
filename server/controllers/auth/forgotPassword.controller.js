@@ -1,23 +1,26 @@
 const jwt = require('jsonwebtoken');
 const sgMail = require('@sendgrid/mail');
 
+const config = require('../../../config/config');
 const User = require('../../models/user.model');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+sgMail.setApiKey(config.sendgridApiKey);
 
 module.exports = (req, res, next) => {
     const { email } = req.body;
+
     User.findOne({ email }, (err, user) => {
         if(err || !user) {
             return res
                 .status(400)
                 .json({
-                    error: 'user with that email does not exist'
+                    forgotPasswordError: `There's no user with that email`
                 });
         };
 
         const token = jwt.sign(
             { _id: user._id, name: user.name },
-            process.env.JWT_RESET_PASSWORD,
+            config.jwtResetPassword,
             {
                 expiresIn: '10m'
             }
@@ -28,11 +31,11 @@ module.exports = (req, res, next) => {
             to: email,
             subject: `Password reset link`,
             html: `
-            <h1>Please use the following link to reset your password</h1>
-            <a href="${process.env.CLIENT_URL}/auth/password/reset/${token}">${process.env.CLIENT_URL}/auth/password/reset/${token}</a>
-            <hr/>
-            <p>This email may contain sensitive information</p>
-            <p>${process.env.CLIENT_URL}</p>
+                <h1>Please use the following link to reset your password</h1>
+                <a href="${config.clientUrl}/auth/password/reset/${token}">${config.clientUrl}/auth/password/reset/${token}</a>
+                <hr/>
+                <p>This email may contain sensitive information</p>
+                <p>${config.clientUrl}</p>
             `
         }
 
@@ -41,7 +44,7 @@ module.exports = (req, res, next) => {
                 return res
                     .status(400)
                     .json({
-                        error: 'Database connection error on user password forgot request'
+                        forgotPasswordError: 'Database connection error'
                     })
             } else {
                 sgMail
@@ -49,13 +52,13 @@ module.exports = (req, res, next) => {
                     .then(sent => {
                         // console.log('email sent');
                         return res.json({
-                            message: `Email has been sent to ${email}. Follow the instructions to change your password`
+                            message: `An email has been sent to ${email}. Please Follow the instructions to activate your account`
                         })
                     })
                     .catch(err => {
                         // console.log('signup email send failed', err);
                         return res.json({
-                            error: err.message
+                            forgotPasswordError: err.message
                         })
                     })
             }

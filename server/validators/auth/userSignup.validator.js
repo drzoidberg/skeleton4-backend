@@ -6,6 +6,8 @@ module.exports = [
         .isEmpty()
         .withMessage('Name is required'),
     check('email')
+        .not()
+        .isEmpty()
         .isEmail()
         .withMessage('Must be a valid email address'),
     check('password')

@@ -10,17 +10,18 @@ module.exports = (req, res) => {
         /* check if user exists */
         if(err || !user) {
             return res
-                .status(401)
+            .status(400)
                 .json({
-                    signinError: `There's no user with that email. Please sign up.`
+                    signinError: `There's no user with that email. Please sign up`
                 });
         }
         /* authenticate */
         if(!user.authenticate(password)) {
             return res
-                .status(401)
+            .status(401)                                        /* 401 Unauthorized: the request has not been applied because
+                                                                    it lacks valid authentication credentials for the target resource. */
                 .json({
-                    signinError: `Email and password don't match.`
+                    signinError: `Email and password don't match`
                 });
         }
         /* generate token & send it to the client */
