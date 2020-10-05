@@ -4,15 +4,14 @@ const {
     userSignupValidator,
     userSigninValidator,
     forgotPasswordValidator,
-    // resetPasswordValidator,
+    resetPasswordValidator,
 } = require('../validators/auth');
 
 const {
     accountActivationController,
     forgotPasswordController,
     // googleLoginController,
-    // requireSigninController,
-    // resetPasswordController,
+    resetPasswordController,
     signinController,
     signupController
 } = require('../controllers/auth');
@@ -42,5 +41,10 @@ router.post('/forgot-password',
     forgotPasswordController
 );
 
+router.post('/reset-password',
+    resetPasswordValidator,
+    runValidationMiddleware,
+    resetPasswordController
+);
 
 module.exports = router;
