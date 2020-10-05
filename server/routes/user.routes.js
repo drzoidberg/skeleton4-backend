@@ -15,6 +15,10 @@ router.put('/user/update',
     updateController
 );
 
-// router.put('/admin/update', requireSignin, adminMiddleware, update);
+router.put('/admin/update',
+    requireSigninMiddleware,
+    isAdminMiddleware,
+    updateController
+);
 
 module.exports = router
