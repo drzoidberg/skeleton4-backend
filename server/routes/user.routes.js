@@ -1,7 +1,23 @@
 const express = require('express');
 
-const { requireSigninMiddleware, isAdminMiddleware } = require('../middlewares');
-const { readController, updateController } = require('../controllers/user')
+const {
+    userUpdateValidator,
+    userRemoveValidator
+} = require('../validators/');
+
+const {
+    isAdminMiddleware,
+    requireSigninMiddleware,
+    runValidationsMiddleware
+    // imageUploadMiddleware
+} = require('../middlewares');
+
+const {
+    listController,
+    readController,
+    removeController,
+    updateController
+} = require('../controllers/user')
 
 const router = express.Router();
 
@@ -10,9 +26,29 @@ router.get('/user/:id',
     readController
 );
 
+/* implement */
+router.get('/users/',
+    requireSigninMiddleware,
+    listController
+);
+
+/* implement image upload, isAuthorizedMiddleware */
 router.put('/user/update',
     requireSigninMiddleware,
+    // isAuthorizedMiddleware,
+    // imageUploadMiddleware.single('avatar'),
+    userUpdateValidator,
+    runValidationsMiddleware,
     updateController
+);
+
+/* implement, removeController, userRemoveValidator */
+router.get('/users/',
+    requireSigninMiddleware,
+    // isAuthorizedMiddleware,
+    userRemoveValidator,
+    runValidationsMiddleware,
+    removeController
 );
 
 router.put('/admin/update',

@@ -1,11 +1,11 @@
 const express = require('express');
 
 const {
-    userSignupValidator,
-    userSigninValidator,
     forgotPasswordValidator,
     resetPasswordValidator,
-} = require('../validators/auth');
+    userSigninValidator,
+    userSignupValidator,
+} = require('../validators/');
 
 const {
     accountActivationController,
@@ -16,7 +16,7 @@ const {
     signupController
 } = require('../controllers/auth');
 
-const runValidationsMiddleware = require('../middlewares/runValidations.middleware')
+const { runValidationsMiddleware } = require('../middlewares/')
 
 const router = express.Router();
 

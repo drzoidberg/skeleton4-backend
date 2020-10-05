@@ -10,25 +10,8 @@ module.exports = (req, res) => {
                 updateError: 'User not found'
             });
         }
-                                                                            /* we have to perform the validations
-                                                                                done in other endpoints */
-        if (!name) {
-            return res.status(400).json({
-                updateError: 'Name is required'
-            });
-        } else {
-            user.name = name;
-        }
-
-        if (password) {
-            if (password.length < 6) {
-                return res.status(400).json({
-                    updateError: 'Password must be at least 6 characters long'
-                });
-            } else {
-                user.password = password;
-            }
-        }
+        user.name = name;
+        user.password = password;
 
         user.save((err, updatedUser) => {
             if (err) {
