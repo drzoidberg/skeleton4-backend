@@ -8,7 +8,7 @@ const {
 } = require('../validators/auth');
 
 const {
-    // accountActivationController,
+    accountActivationController,
     // forgotPasswordController,
     // googleLoginController,
     // requireSigninController,
@@ -32,5 +32,9 @@ router.post('/signin',
     runValidationMiddleware,
     signinController
 );
+
+router.post('/account-activation',
+    accountActivationController);
+
 
 module.exports = router;

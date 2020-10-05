@@ -1,41 +1,43 @@
 const jwt = require('jsonwebtoken');
 
+const config = require('../../../config/config');
 const User = require('../../models/user.model');
 
 module.exports = (req, res) => {
     const { token } = req.body;
 
     if (token) {
-        jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION, function(err, decoded) {
+        jwt.verify(token, config.jwtAccountActivation, function(err, decoded) {
             if(err) {
-                console.log('jwt verify in account activation error ', err);
+                console.log('accountActivation error. Verifying jwt in account', err);
                 return res
                     .status(401)
                     .json({
-                        error: 'Expired link. Signup again'
+                        accountActivationError: 'Expired link. Please signup again'
                     })
             }
 
+            /* if no error, extract name, email & password from stored token */
             const { name, email, password } = jwt.decode(token);
             const user = new User({ name, email, password })
 
             user.save((err, user) => {
                 if (err) {
-                    console.log('save usr in account activation error', err);
-                return res
-                    .status(401)
-                    .json({
-                        error: 'Error saving user in database. Try signup again'
-                    });
+                    // console.log('accountActivation error. Saving user in account', err);
+                    return res
+                        .status(401)
+                        .json({
+                            accountActivationError: 'Error saving user in database. Please signup again'
+                        });
                 }
                 return res.json({
-                    message: 'Sigunp success. Please signin'
+                    message: 'Signup success! Please signin'
                 })
             });
         });
     } else {
         return res.json({
-            message: 'Something went wrong. Please try again'
+            accountActivationError: 'Something went wrong. Please try again'
         })
     }
 }

@@ -14,7 +14,7 @@ module.exports = (req, res) => {
             return res
                 .status(401)
                 .json({
-                    error: 'The email is taken',
+                    signupError: 'The email is taken',
             });
         }
     });
@@ -24,8 +24,6 @@ module.exports = (req, res) => {
         config.jwtAccountActivation,
         { expiresIn: '10m' }
     )
-
-        console.log(config.sendgridEmailFrom);
 
     const emailData = {
         from: config.sendgridEmailFrom,
@@ -49,9 +47,9 @@ module.exports = (req, res) => {
             })
         })
         .catch(err => {
-            // console.log('Server error: Signup email send failed\n', err.response.body);
+            // console.log('Server signupError: Signup email send failed\n', err.response.body);
             return res.json({
-                error: err.message
+                signupError: err.message
             })
         })
 };

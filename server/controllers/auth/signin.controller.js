@@ -12,7 +12,7 @@ module.exports = (req, res) => {
             return res
                 .status(401)
                 .json({
-                    error: `There's no user with that email. Please sign up.`
+                    signinError: `There's no user with that email. Please sign up.`
                 });
         }
         /* authenticate */
@@ -20,7 +20,7 @@ module.exports = (req, res) => {
             return res
                 .status(401)
                 .json({
-                    error: `Email and password don't match.`
+                    signinError: `Email and password don't match.`
                 });
         }
         /* generate token & send it to the client */

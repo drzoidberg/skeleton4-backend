@@ -1,5 +1,5 @@
 module.exports = {
-    // accountActivationController: require('./accountActivation.controller'),
+    accountActivationController: require('./accountActivation.controller'),
     // forgotPasswordController: require('./forgotPassword.controller'),
     // googleLoginController: require('./googleLogin.controller'),
     // requireSigninController: require('./requireSignin.controller'),
