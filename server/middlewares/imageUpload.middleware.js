@@ -8,7 +8,7 @@ const MIME_TYPE_MAP = {
 };
 
 /* configuring multer instance for avatar uploads */
-const imageUpload = multer({
+module.exports = multer({
     limits: 500000,
     storage: multer.diskStorage({
         destination: (req, file, cb) => {                                   /* setting file path. Path must exist */
@@ -25,5 +25,3 @@ const imageUpload = multer({
         }
     })
 });
-
-module.exports = imageUpload;

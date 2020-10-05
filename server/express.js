@@ -6,9 +6,8 @@ const morgan = require('morgan');
 const path = require('path');
 
 const Template = require('../template');
-const unauthorizedErrorMiddleware = require('./middlewares/unauthorizedError.middleware');
-const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
 const authRoutes = require('./routes/auth.routes');
+const { manualCorsMiddleware, unauthorizedErrorMiddleware } = require('./middlewares/');
 // const userRoutes = require('./routes/user.routes');
 
 const app = express();

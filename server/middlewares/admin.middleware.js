@@ -1,6 +1,6 @@
 const User = require('../models/user.model');
 
-exports.adminMiddleware = (req, res, next) => {
+module.exports = (req, res, next) => {
     User.findById({_id: req.user._id }).exec((err, user) => {
         if(err || !user) {
             return res
