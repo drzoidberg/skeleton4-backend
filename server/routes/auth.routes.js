@@ -10,7 +10,7 @@ const {
 const {
     accountActivationController,
     forgotPasswordController,
-    // googleLoginController,
+    googleLoginController,
     resetPasswordController,
     signinController,
     signupController
@@ -47,4 +47,6 @@ router.post('/reset-password',
     resetPasswordController
 );
 
+router.post('/google-login',
+    googleLoginController)
 module.exports = router;

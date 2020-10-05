@@ -3,7 +3,7 @@
 const config = {
     nodeEnv: process.env.NODE_ENV || 'development',
     frontendPort: process.env.FRONTEND_PORT || 5000,
-    googleClient: process.env.GOOGLE_CLIENT || 'fill_the_dotenv_field',
+    googleClientId: process.env.GOOGLE_CLIENT_ID || 'fill_the_dotenv_field',
     jwtAccountActivation: process.env.JWT_ACCOUNT_ACTIVATION || 'fill_the_dotenv_field',
     jwtResetPassword: process.env.JWT_RESET_PASSWORD || 'fill_the_dotenv_field',
     jwtSecret: process.env.JWT_SECRET || 'fill_the_dotenv_field',

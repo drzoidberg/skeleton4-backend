@@ -35,7 +35,12 @@ module.exports = (req, res) => {
 
         res.json({
             token: token,
-            user: { _id, name, email, role }
+            user: {
+                _id,
+                name,
+                email,
+                role
+            }
         })
     })
 }
