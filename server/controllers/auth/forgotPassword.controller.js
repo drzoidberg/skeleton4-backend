@@ -21,13 +21,11 @@ module.exports = (req, res, next) => {
         const token = jwt.sign(
             { _id: user._id, name: user.name },
             config.jwtResetPassword,
-            {
-                expiresIn: '10m'
-            }
+            { expiresIn: '10m' }
         )
 
         const emailData = {
-            from: process.env.EMAIL_FROM,
+            from: config.sendgridEmailFrom,
             to: email,
             subject: `Password reset link`,
             html: `
@@ -42,7 +40,7 @@ module.exports = (req, res, next) => {
         return user.updateOne({ resetPasswordLink: token }, (err, sucess) => {
             if(err) {
                 return res
-                    .status(400)
+                    .status(500)
                     .json({
                         forgotPasswordError: 'Database connection error'
                     })
@@ -57,7 +55,8 @@ module.exports = (req, res, next) => {
                     })
                     .catch(err => {
                         // console.log('signup email send failed', err);
-                        return res.json({
+                        return res
+                            .json({
                             forgotPasswordError: err.message
                         })
                     })

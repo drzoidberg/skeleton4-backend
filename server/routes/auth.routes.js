@@ -36,7 +36,7 @@ router.post('/signin',
 router.post('/account-activation',
     accountActivationController);
 
-router.put('/forgot-password',
+router.post('/forgot-password',
     forgotPasswordValidator,
     runValidationMiddleware,
     forgotPasswordController
