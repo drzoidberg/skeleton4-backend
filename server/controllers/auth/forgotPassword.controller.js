@@ -36,7 +36,11 @@ module.exports = (req, res, next) => {
                 <p>${config.clientUrl}</p>
             `
         }
-
+                                                                                        /* the token containing the user data & token
+                                                                                            expire is now stored in the user via
+                                                                                            updating it.
+                                                                                            resetPasswordLink was available in the
+                                                                                            user model */
         return user.updateOne({ resetPasswordLink: token }, (err, sucess) => {
             if(err) {
                 return res
