@@ -1,5 +1,8 @@
 const User = require('../../models/user.model');
 
+// temporarily filled
+
+
 module.exports = (req, res) => {
     const userId = req.params.id;
     User.findById(userId).exec((err, user) => {
