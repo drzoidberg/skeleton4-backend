@@ -5,7 +5,7 @@ module.exports = (req, res) => {
     User.findById(userId).exec((err, user) => {
         if (err || !user) {
             return res.status(400).json({
-                error: 'User not found'
+                readError: 'User not found'
             });
         }
         user.hashed_password = undefined;
