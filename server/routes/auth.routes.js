@@ -16,19 +16,19 @@ const {
     signupController
 } = require('../controllers/auth');
 
-const runValidationMiddleware = require('../middlewares/runValidation.middleware')
+const runValidationsMiddleware = require('../middlewares/runValidations.middleware')
 
 const router = express.Router();
 
 router.post('/signup',
     userSignupValidator,
-    runValidationMiddleware,
+    runValidationsMiddleware,
     signupController
 );
 
 router.post('/signin',
     userSigninValidator,
-    runValidationMiddleware,
+    runValidationsMiddleware,
     signinController
 );
 
@@ -37,13 +37,13 @@ router.post('/account-activation',
 
 router.post('/forgot-password',
     forgotPasswordValidator,
-    runValidationMiddleware,
+    runValidationsMiddleware,
     forgotPasswordController
 );
 
 router.post('/reset-password',
     resetPasswordValidator,
-    runValidationMiddleware,
+    runValidationsMiddleware,
     resetPasswordController
 );
 

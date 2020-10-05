@@ -1,6 +1,6 @@
-const User = require('../models/user');
+const User = require('../../models/user.model');
 
-exports.update = (req, res) => {
+module.exports = (req, res) => {
     // console.log('UPDATE USER - req.user', req.user, 'UPDATE DATA', req.body);
     const { name, password } = req.body;
 

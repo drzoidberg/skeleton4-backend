@@ -7,8 +7,8 @@ const path = require('path');
 
 const Template = require('../template');
 const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
 const { manualCorsMiddleware, unauthorizedErrorMiddleware } = require('./middlewares/');
-// const userRoutes = require('./routes/user.routes');
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.use(compress());
 // securing app by setting various HTTP headers
 app.use(helmet());
 
-// HTTP request logger. Brings extra info to each http request when it's performed
+// HTTP request logger. Brings extra info to each http request each time a request is performed
 app.use(morgan('dev'));
 
 // setting CORS manually
@@ -32,9 +32,10 @@ app.use(manualCorsMiddleware);
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
 // setting up routes
-// app.use('/', userRoutes);
+app.use('/api', userRoutes);
 app.use('/api', authRoutes);
 
+// serving a simple template when user try to access '/'
 app.get('/', (req, res, next) => {
     res
         .status(200)

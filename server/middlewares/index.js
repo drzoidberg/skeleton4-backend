@@ -3,6 +3,6 @@ module.exports = {
     imageUploadMiddleware: require('./imageUpload.middleware'),
     manualCorsMiddleware: require('./manualCors.middleware'),
     requireSigninMiddleware: require('./requireSignin.middleware'),
-    runValidationMiddleware: require('./runValidation.middleware'),
+    runValidationsMiddleware: require('./runValidations.middleware'),
     unauthorizedErrorMiddleware: require('./unauthorizedError.middleware')
 }
