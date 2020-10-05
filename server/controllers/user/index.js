@@ -1,6 +1,6 @@
 module.exports = {
-    readController: require('./read.controller'),
-    updateController: require('./update.controller'),
     listController: require('./list.controller'),
-    removeController: require('./remove.controller')
+    readController: require('./read.controller'),
+    removeController: require('./remove.controller'),
+    updateController: require('./update.controller'),
 }

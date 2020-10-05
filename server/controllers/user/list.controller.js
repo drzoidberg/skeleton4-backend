@@ -6,7 +6,7 @@ const User = require('../../models/user.model');
 module.exports = (req, res) => {
     let users = User
         .find()
-        .select('name email avatar updated created')
+        .select('name email avatar updatedAt createdAt')
         .exec((err, users) => {
             if (err || !users) {
                 return res.status(400).json({
