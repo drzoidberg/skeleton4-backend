@@ -34,7 +34,7 @@ app.use('/uploads/images', express.static(path.join('uploads', 'images')));
 
 // setting up routes
 // app.use('/', userRoutes);
-// app.use('/api', authRoutes);
+app.use('/api', authRoutes);
 
 app.get('/', (req, res, next) => {
     res
