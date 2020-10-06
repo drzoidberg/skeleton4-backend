@@ -79,7 +79,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  POST   | /api/signin             |               |                | Sign in                                     | [Go to sample](#post-slash-api-slash-signin)
  POST   | /api/forgot-password    |               |                | Request a password reset when logged in     | [Go to sample](#post-slash-api-slash-forgot-password)
  POST   | /api/reset-password     |               |                | Request a password reset when not logged in | [Go to sample](#post-slash-api-slash-reset-password)
- GET    | /api/users              |               |       ✓        | List a fixed amount of users                | [Go to sample](#get-slash-api-users)
+ GET    | /api/users              |               |       ✓        | List a fixed amount of users                | [Go to sample](#get-slash-api-slash-users)
  GET    | /api/user/:id           |               |       ✓        | Query info from a specific user             | [Go to sample](#get-slash-api-slash-user-id)
  PUT    | /api/user/update/:id    |       ✓       |       ✓        | Edit user                                   | [Go to sample](#put-slash-api-slash-user-slash-update-id)
  PUT    | /api/admin/update/:id   |       ✓       |       ✓        | Edit user (as admin)                        | [Go to sample](#put-slash-api-slash-admin-slash-update-id)
@@ -245,7 +245,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
-**GET** <a id="get-slash-api-slash-users">/api/user/:id</a>
+**GET** <a id="get-slash-api-slash-user-id">/api/user/:id</a>
 - Available params & query config requests
 
  Name | Param | Query | Optional | Expected sample values
