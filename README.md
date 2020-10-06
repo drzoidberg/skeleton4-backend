@@ -81,7 +81,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  POST   | /api/reset-password     |               |                | Request a password reset when not logged in | [Go to sample](#post-slash-api-slash-reset-password)
  GET    | /api/users              |               |       ✓        | List a fixed amount of users                | [Go to sample](#get-slash-api-users)
  GET    | /api/user/:id           |               |       ✓        | Query info from a specific user             | [Go to sample](#get-slash-api-slash-user-id)
- PUT    | /api/user/update/:id    |       ✓       |       ✓        | Edit user                                   | [Go to sample](#put-slash-api-slash-update-id)
+ PUT    | /api/user/update/:id    |       ✓       |       ✓        | Edit user                                   | [Go to sample](#put-slash-api-slash-user-slash-update-id)
  PUT    | /api/admin/update/:id   |       ✓       |       ✓        | Edit user (as admin)                        | [Go to sample](#put-slash-api-slash-admin-slash-update-id)
  DELETE | /api/user/:id           |       ✓       |       ✓        | Remove user                                 | [Go to sample](#delete-slash-api-slash-user-id)
 
@@ -180,7 +180,6 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/api/forgot-password/
 // SAMPLE REQUEST BODY:
-// (nothing)
 {
 	"email": "big.mommy@skynetistheworst.com"
 }
@@ -194,7 +193,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
-**GET** <a id="post-slash-api-slash-reset-password">/api/reset-password/</a>
+**POST** <a id="post-slash-api-slash-reset-password">/api/reset-password/</a>
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected sample values
@@ -204,7 +203,6 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/api/reset-password/
 // SAMPLE REQUEST BODY:
-// (nothing)
 {
 	"resetPasswordLink": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdhZmFlMjRjM2Y1ZjRiYWFkOGMwY2IiLCJuYW1lIjoiSm9yZ2UgVmljZW5zIiwiaWF0IjoxNjAxOTA4Mjg2LCJleHAiOjE2MDE5MDg4ODZ9.9dcT7MlnrxbmUlrcntwd0EiJk57YMalRR52duYtu2Uc",
 	"newPassword": "222222"
@@ -275,7 +273,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 <!-- ------------------------------------------------------------------------------------------------------ -->
 
-**POST** <a id="put-slash-api-slash-update-id">/api/update/:id</a>
+**PUT** <a id="put-slash-api-slash-user-slash-update-id">/api/user/update/:id</a>
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected sample values
@@ -283,7 +281,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  id     |   ✓   |       |          | 5f7c0a7a833d80501f8f7f92
 
 ```javascript
-// SAMPLE REQUEST URL: http://localhost:3000/api/update/5f7c0a7a833d80501f8f7f92
+// SAMPLE REQUEST URL: http://localhost:3000/api/user/update/5f7c0a7a833d80501f8f7f92
 // SAMPLE REQUEST BODY:
 {
 	"name": "Uncle Bob",
@@ -300,6 +298,65 @@ mern-skeleton2-backend is an tiny backend application that supports user account
     "email": "the.savior@skynetistheworst.com",
     "createdAt": "2020-10-06T06:11:06.418Z",
     "updatedAt": "2020-10-06T08:57:00.102Z",
+    "__v": 0
+}
+```
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+**PUT** <a id="put-slash-api-slash-admin-slash-update-id">/api/admin/update/:id</a>
+- Available params & query config requests
+
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :-----------------------
+ id     |   ✓   |       |          | 5f7c0a7a833d80501f8f7f92
+
+```javascript
+// SAMPLE REQUEST URL: http://localhost:3000/api/admin/update/5f7c0a7a833d80501f8f7f92
+// SAMPLE REQUEST BODY:
+{
+	"name": "Uncle Bob",
+	"password": "CyberdyneSysM101"
+}
+
+// ---------------------------------------------------
+
+// SAMPLE RESPONSE:
+{
+    "role": "user",
+    "_id": "5f7c0a7a833d80501f8f7f92",
+    "name": "Uncle Bob",
+    "email": "the.savior@skynetistheworst.com",
+    "createdAt": "2020-10-06T06:11:06.418Z",
+    "updatedAt": "2020-10-06T08:57:00.102Z",
+    "__v": 0
+}
+```
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+**DELETE** <a id="delete-slash-api-slash-user-id">/api/user/:id</a>
+- Available params & query config requests
+
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
+ id     |   ✓   |       |          | 5f7c0a7a833d80501f8f7f92
+
+```javascript
+// SAMPLE REQUEST URL: http://localhost:3000/api/user/5f7c0a7a833d80501f8f7f92
+// SAMPLE REQUEST BODY:
+// (nothing)
+// ---------------------------------------------------
+
+// SAMPLE RESPONSE:
+{
+    "resetPasswordLink": "",
+    "role": "admin",
+    "_id": "5f7afae24c3f5f4baad8c0cb",
+    "name": "Jordi",
+    "email": "gromit.jvv@gmail.com",
+    "createdAt": "2020-10-05T10:52:18.910Z",
+    "updatedAt": "2020-10-05T16:42:46.993Z",
     "__v": 0
 }
 ```
