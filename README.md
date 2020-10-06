@@ -21,7 +21,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 ## 🔎 App features
  Feature| Description
-:------------------------------- |:--------------------------------------------------------------------------------------------
+:-------------------------------------- |:---------------------------------------------------------------------------------------------------
  User management                 | Users can register by creating a new account using an email address, then edit their data and delete their accounts
  User list                       | Any visitor can see a list of all registered users.
  Authentication                  | Registered users can sign-in and sign-out.
@@ -34,7 +34,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 ## 🧪 Used Packages
  Package                         | Description
-:------------------------------- |:--------------------------------------------------------------------------------------------------------------------------
+:-------------------------------------- |:---------------------------------------------------------------------------------------------------------------------------------
  @sendgrid/mail                  | A library used for integrate sendgrid's delivery mail into NodeJS
  body-parser                     | A request body-parsing middleware used for simplifing browser-server communication by exchanging JSON in the request body
  compression                     | Compression middleware used for trying to compress response bodies for all requests that traverse the middleware
@@ -59,7 +59,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 ### User
  Name            | Type                | Unique | Required | Extra info
-:--------------- |:------------------- | :----: | :------: |:-------------------------------
+:---------------------- |:-------------------------- | :----: | :------: |:--------------------------------------
  name            | string              |        |    ✓     |
  email           | string              |   ✓    |    ✓     |
  hashed_password | string              |        |    ✓     |
@@ -73,7 +73,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 ### For Users
  Method | Endpoint                | Authorization | Authentication | Action                                      | Expected data samples
-:------ |:----------------------- | :-----------: | :------------: |:------------------------------------------- |:----------------------------------------------------------
+:------ |:------------------------------ | :-----------: | :------------: |:-------------------------------------------------- |:-----------------------------------------------------------------
  POST   | /api/signup             |               |                | Sign out                                    | [Go to sample](#post-slash-api-slash-signup)
  POST   | /api/account-activation |               |                | Activate the account (via email)            | [Go to sample](#post-slash-api-slash-account-activation)
  POST   | /api/signin             |               |                | Sign in                                     | [Go to sample](#post-slash-api-slash-signin)
@@ -92,8 +92,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **POST** <a id="post-slash-api-slash-signup">/api/signup/</a>
 - Available params & query config requests
 
- Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------: | :--------------
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
  *none* |       |       |          |
 
 ```javascript
@@ -118,8 +118,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **POST** <a id="post-slash-api-slash-account-activation">/api/account-activation/</a>
 - Available params & query config requests
 
- Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------: | :--------------
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
  *none* |       |       |          |
 
 ```javascript
@@ -142,8 +142,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **POST** <a id="post-slash-api-slash-signin">/api/signin/</a>
 - Available params & query config requests
 
- Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------: | :--------------
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
  *none* |       |       |          |
 
 ```javascript
@@ -173,8 +173,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **POST** <a id="post-slash-api-slash-forgot-password">/api/forgot-password/</a>
 - Available params & query config requests
 
- Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------: | :--------------
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
  *none* |       |       |          |
 
 ```javascript
@@ -197,8 +197,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **GET** <a id="post-slash-api-slash-reset-password">/api/reset-password/</a>
 - Available params & query config requests
 
- Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------: | :--------------
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
  *none* |       |       |          |
 
 ```javascript
@@ -222,8 +222,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **GET** <a id="get-slash-api-slash-users">/api/users/</a>
 - Available params & query config requests
 
- Name | Param | Query | Optional | Expected values
-:---- | :---: | :---: | :------: | :--------------
+ Name | Param | Query | Optional | Expected sample values
+:---- | :---: | :---: | :------: | :---------------------
  page |       |   ✓   |    ✓     | 1, 2, 9…
 
 ```javascript
@@ -250,29 +250,59 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 **GET** <a id="get-slash-api-slash-users">/api/user/:id</a>
 - Available params & query config requests
 
- Name | Param | Query | Optional | Expected values
-:---- | :---: | :---: | :------: | :--------------
+ Name | Param | Query | Optional | Expected sample values
+:---- | :---: | :---: | :------: | :---------------------
  id   |   ✓   |       |          | 5f7c0a7a833d80501f8f7f92
 
 ```javascript
-// SAMPLE REQUEST URL: http://localhost:3000/api/users?page=1
+// SAMPLE REQUEST URL: http://localhost:3000/api/user/5f7c0a7a833d80501f8f7f92
 // SAMPLE REQUEST BODY:
 // (nothing)
 // ---------------------------------------------------
 
 // SAMPLE RESPONSE:
-[
-    {
-        "_id": "5f7c0a7a833d80501f8f7f92",
-        "name": "John Connor",
-        "email": "the.savior@skynetistheworst.com",
-        "createdAt": "2020-10-06T06:11:06.418Z",
-        "updatedAt": "2020-10-06T08:57:00.102Z"
-    },
-    // { (possibly) more objects }
-]
+{
+    "resetPasswordLink": "",
+    "role": "user",
+    "_id": "5f7afae24c3f5f4baad8c0cb",
+    "name": "John Connor",
+    "email": "the.savior@skynetistheworst.com",
+    "createdAt": "2020-10-05T10:52:18.910Z",
+    "updatedAt": "2020-10-05T16:34:14.842Z",
+    "__v": 0
+}
 ```
 
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+**POST** <a id="put-slash-api-slash-update-id">/api/update/:id</a>
+- Available params & query config requests
+
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :-----------------------
+ id     |   ✓   |       |          | 5f7c0a7a833d80501f8f7f92
+
+```javascript
+// SAMPLE REQUEST URL: http://localhost:3000/api/update/5f7c0a7a833d80501f8f7f92
+// SAMPLE REQUEST BODY:
+{
+	"name": "Uncle Bob",
+	"password": "CyberdyneSysM101"
+}
+
+// ---------------------------------------------------
+
+// SAMPLE RESPONSE:
+{
+    "role": "user",
+    "_id": "5f7c0a7a833d80501f8f7f92",
+    "name": "Uncle Bob",
+    "email": "the.savior@skynetistheworst.com",
+    "createdAt": "2020-10-06T06:11:06.418Z",
+    "updatedAt": "2020-10-06T08:57:00.102Z",
+    "__v": 0
+}
+```
 
 
 
