@@ -31,24 +31,23 @@ router.get('/users/',
     listController
 );
 
-/* implement imageUploadMiddleware, isAuthorizedMiddleware */
-router.put('/user/update',
+/* implement imageUploadMiddleware */
+router.put('/user/update/:id',
     isAuthenticatedMiddleware,
-    // isAuthorizedMiddleware,
+    isAuthorizedMiddleware,
     // imageUploadMiddleware.single('avatar'),
     userUpdateValidator,
     runValidationsMiddleware,
     updateController
 );
 
-/* implement removeController, isAuthorizedMiddleware */
 router.delete('/user/:id',
     isAuthenticatedMiddleware,
-    // isAuthorizedMiddleware,
+    isAuthorizedMiddleware,
     removeController
 );
 
-router.put('/admin/update',
+router.put('/admin/update/:id',
     isAuthenticatedMiddleware,
     isAdminMiddleware,
     userUpdateValidator,
