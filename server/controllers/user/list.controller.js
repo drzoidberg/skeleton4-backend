@@ -1,12 +1,16 @@
 const User = require('../../models/user.model');
 
-// temporarily filled
-
-
 module.exports = (req, res) => {
-    let users = User
+    const page = req.query.page;
+
+    const PAGE_SIZE = 12;                                   // For page 1, the skip is: (1 - 1) * 20 => 0 * 20 = 0
+    const skip = (page - 1) * PAGE_SIZE;
+
+    User
         .find()
-        .select('name email updatedAt createdAt') /* selects specific fields you want to return in the response */
+        .skip(skip)                                         /* .skip & .limit serves as a  */
+        .limit(PAGE_SIZE)
+        .select('name email updatedAt createdAt')           /* selects specific fields you want to return in the response */
         .exec((err, users) => {
             if (err || !users) {
                 return res.status(400).json({
