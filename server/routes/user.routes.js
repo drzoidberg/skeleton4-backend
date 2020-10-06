@@ -1,36 +1,58 @@
 const express = require('express');
 
-const userControllers = require('../controllers/user.controllers');
-const authControllers = require('../controllers/auth.controllers');
-const imageUpload = require('../middlewares/imageUpload.middlewares');
+const {
+    userUpdateValidator
+} = require('../validators/');
 
+const {
+    isAdminMiddleware,
+    isAuthenticatedMiddleware,
+    isAuthorizedMiddleware,
+    runValidationsMiddleware
+    // imageUploadMiddleware
+} = require('../middlewares');
+
+const {
+    listController,
+    readController,
+    removeController,
+    updateController
+} = require('../controllers/user')
 
 const router = express.Router();
 
-router
-    .route('/api/users')
-    .get(userControllers.list)
-    .post(userControllers.create);
+router.get('/user/:id',
+    isAuthenticatedMiddleware,
+    readController
+);
 
-router
-    .route('/api/users/:uid')
-    .get(
-        authControllers.hasAuthentication,
-        userControllers.read)
-    .patch(
-        authControllers.hasAuthentication,
-        authControllers.hasAuthorization,
-        imageUpload.single('avatar'),
-        // imageUpload.array('avatar', 1),
-        // imageUpload.fields([{ name: 'avatar', maxCount: 0 }]),
-        userControllers.update
-    )
-    .delete(
-        authControllers.hasAuthentication,
-        authControllers.hasAuthorization,
-        userControllers.remove
-    );
+router.get('/users/',
+    isAuthenticatedMiddleware,
+    listController
+);
 
-router.param('uid', userControllers.userById);      /* every time uid param is passed, it fires userById controller */
+/* implement imageUploadMiddleware */
+router.put('/user/update/:id',
+    isAuthenticatedMiddleware,
+    isAuthorizedMiddleware,
+    // imageUploadMiddleware.single('avatar'),
+    userUpdateValidator,
+    runValidationsMiddleware,
+    updateController
+);
 
-module.exports = router;
+router.delete('/user/:id',
+    isAuthenticatedMiddleware,
+    isAuthorizedMiddleware,
+    removeController
+);
+
+router.put('/admin/update/:id',
+    isAuthenticatedMiddleware,
+    isAdminMiddleware,
+    userUpdateValidator,
+    runValidationsMiddleware,
+    updateController
+);
+
+module.exports = router

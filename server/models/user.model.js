@@ -1,40 +1,44 @@
 const mongoose = require('mongoose');
 const crypto = require('crypto');
 
-/* setting user schema */
-const UserSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        trim: true,
-        required: 'Name is required',
+const userSchema = new mongoose.Schema(
+    {
+        name: {
+            type: String,
+            trim: true,
+            required: true,
+            max: 32,
+        },
+        email: {
+            type: String,
+            trim: true,
+            required: true,
+            unique: true,
+            lowercase: true,
+        },
+        hashed_password: {
+            type: String,
+            required: true,
+        },
+        salt: String,
+        role: {
+            type: String,
+            default: 'user',
+        },
+        resetPasswordLink: {
+            data: String,
+            default: '',
+        },
     },
-    email: {
-        type: String,
-        trim: true,
-        unique: 'Email already exists',
-        match: [/.+\@.+\..+/, 'Please fill a valid email address'],
-        required: 'Email is required',
-    },
-    avatar: {
-        type: String,
-        required: false,
-    },
-    created: {
-        type: Date,
-        default: Date.now,
-    },
-    updated: Date,
-    hashed_password: {
-        /* encrypted passwords */ type: String,
-        required: 'Password is required',
-    },
-    salt: String /* additional field to hash password */,
-});
+    { timestamps: true }
+);
 
-/* as the password is not stored directly in the db, it is hadled in a 'virtual' field */
-UserSchema.virtual('password')
-    .set(function (password) {                         /* setting the password & salt using  'virtual' methods described down */
+userSchema
+    .virtual('password')
+    .set(function (password) {
+        /* temporarily create a variable called _password */
         this._password = password;
+        /* generate salt, a unique string that will be used when the password finally is hashed */
         this.salt = this.makeSalt();
         this.hashed_password = this.encryptPassword(password);
     })
@@ -42,36 +46,36 @@ UserSchema.virtual('password')
         return this._password;
     });
 
-UserSchema.methods = {
+                                                        /* each time we want to authenticate a user,
+                                                            we recreate the encryption process, taking the hashed
+                                                            password from the db & the plain text version that is
+                                                            passed (usually in an API controller-route) when we
+                                                            perform a db operation under a user model instance that
+                                                            needs authentication.
+                                                            If the result is a success, the user is authenticated */
+
+userSchema.methods = {
     authenticate: function (plainText) {
-        return this.encryptPassword(plainText) === this.hashed_password;
+        return (this.encryptPassword(plainText) === this.hashed_password);
     },
+
     encryptPassword: function (password) {
         if (!password) return '';
         try {
-            return crypto                               /* native library for encrypt/decrypt */
+            return crypto
                 .createHmac('sha1', this.salt)
                 .update(password)
                 .digest('hex');
-        } catch (error) {
+        } catch (err) {
             return '';
         }
     },
+
     makeSalt: function () {
-        return Math.round(new Date().valueOf() * Math.random()) + '';       /* salt based on timestamp * 'random' number between 0 & 1 */
+        return (
+            Math.round(new Date().valueOf() * Math.random()) + ''  /* based on a timestamp of the moment of method execution * a random number */
+        );
     },
 };
 
-UserSchema.path('hashed_password').validate(function () {
-    if (                                                                     /* password validation: in the db */
-        this._password &&
-        this._password.length < 6
-    ) {
-        this.invalidate('password', 'Password must be at least 6 characters.');
-    }
-    if (this.isNew && !this._password) {
-        this.invalidate('password', 'Password is required');
-    }
-}, null);
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', userSchema);

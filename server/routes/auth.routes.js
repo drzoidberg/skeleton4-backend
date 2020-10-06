@@ -1,14 +1,52 @@
 const express = require('express');
-const authControllers = require('../controllers/auth.controllers');
+
+const {
+    forgotPasswordValidator,
+    resetPasswordValidator,
+    userSigninValidator,
+    userSignupValidator,
+} = require('../validators/');
+
+const {
+    accountActivationController,
+    forgotPasswordController,
+    googleLoginController,
+    resetPasswordController,
+    signinController,
+    signupController
+} = require('../controllers/auth');
+
+const { runValidationsMiddleware } = require('../middlewares/')
 
 const router = express.Router();
 
-router
-    .route('/auth/signin')
-    .post(authControllers.signin)
+router.post('/signup',
+    userSignupValidator,
+    runValidationsMiddleware,
+    signupController
+);
 
-router
-    .route('/auth/signout')
-    .get(authControllers.signout)
+router.post('/signin',
+    userSigninValidator,
+    runValidationsMiddleware,
+    signinController
+);
 
+router.post('/account-activation',
+    accountActivationController);
+
+router.post('/forgot-password',
+    forgotPasswordValidator,
+    runValidationsMiddleware,
+    forgotPasswordController
+);
+
+router.post('/reset-password',
+    resetPasswordValidator,
+    runValidationsMiddleware,
+    resetPasswordController
+);
+
+router.post('/google-login',
+    googleLoginController)
 module.exports = router;

@@ -1,14 +1,14 @@
-const express = require('express');
 const bodyParser = require('body-parser');
 const compress = require('compression');
+const express = require('express');
 const helmet = require('helmet');
+const morgan = require('morgan');
 const path = require('path');
 
 const Template = require('../template');
-const errorHandlerMiddleware = require('./middlewares/errorHandler.middleware');
-const manualCorsMiddleware = require('./middlewares/manualCors.middleware');
-const userRoutes = require('./routes/user.routes');
 const authRoutes = require('./routes/auth.routes');
+const userRoutes = require('./routes/user.routes');
+const { manualCorsMiddleware, unauthorizedErrorMiddleware } = require('./middlewares/');
 
 const app = express();
 
@@ -22,15 +22,20 @@ app.use(compress());
 // securing app by setting various HTTP headers
 app.use(helmet());
 
+// HTTP request logger. Brings extra info to each http request each time a request is performed
+app.use(morgan('dev'));
+
 // setting CORS manually
 app.use(manualCorsMiddleware);
 
-// SETTING UP ROUTES
 // serving statically images
 app.use('/uploads/images', express.static(path.join('uploads', 'images')));
-app.use('/', userRoutes);
-app.use('/', authRoutes);
 
+// setting up routes
+app.use('/api', userRoutes);
+app.use('/api', authRoutes);
+
+// serving a simple template when user try to access '/'
 app.get('/', (req, res, next) => {
     res
         .status(200)
@@ -38,6 +43,6 @@ app.get('/', (req, res, next) => {
 });
 
 // it triggers when no other error in the app has been triggered
-app.use(errorHandlerMiddleware);
+app.use(unauthorizedErrorMiddleware);
 
 module.exports = app;
