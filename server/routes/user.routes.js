@@ -42,7 +42,7 @@ router.put('/user/update',
 );
 
 /* implement removeController, isAuthorizedMiddleware */
-router.delete('/users/',
+router.delete('/user/:id',
     isAuthenticatedMiddleware,
     // isAuthorizedMiddleware,
     removeController

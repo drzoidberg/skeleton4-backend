@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
             return res
                 .status(400)
                 .json({
-                    error: 'User not found'
+                    isAdminError: 'User not found'
                 });
         }
                                                                             /* if user is admin, attach the user data to

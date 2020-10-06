@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
         return res
             .status(422)
             .json({
-                validationError: errors.array()[0].msg
+                runValidationsError: errors.array()[0].msg
             });
     }
     next();
