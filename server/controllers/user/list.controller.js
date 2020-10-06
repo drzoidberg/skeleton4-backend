@@ -1,7 +1,7 @@
 const User = require('../../models/user.model');
 
 module.exports = (req, res) => {
-    const page = req.query.page;
+    const page = req.query.page || 1;                       /*  a default value if page is not set by the client */
 
     const PAGE_SIZE = 12;                                   // For page 1, the skip is: (1 - 1) * 20 => 0 * 20 = 0
     const skip = (page - 1) * PAGE_SIZE;

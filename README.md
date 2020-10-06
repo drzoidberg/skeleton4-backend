@@ -217,6 +217,62 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 }
 ```
 
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+**GET** <a id="get-slash-api-slash-users">/api/users/</a>
+- Available params & query config requests
+
+ Name | Param | Query | Optional | Expected values
+:---- | :---: | :---: |:-------- |:---------------
+ page |       |   ✓   |    ✓     | 1, 2, 9…
+
+```javascript
+// SAMPLE REQUEST URL: http://localhost:3000/api/users?page=1
+// SAMPLE REQUEST BODY:
+// (nothing)
+// ---------------------------------------------------
+
+// SAMPLE RESPONSE:
+[
+    {
+        "_id": "5f7c0a7a833d80501f8f7f92",
+        "name": "John Connor",
+        "email": "the.savior@skynetistheworst.com",
+        "createdAt": "2020-10-06T06:11:06.418Z",
+        "updatedAt": "2020-10-06T08:57:00.102Z"
+    },
+    // { (possibly) more objects }
+]
+```
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+**GET** <a id="get-slash-api-slash-users">/api/user/:id</a>
+- Available params & query config requests
+
+ Name | Param | Query | Optional | Expected values
+:---- | :---: | :---: |:-------- |:---------------
+ id   |   ✓   |       |          |
+
+```javascript
+// SAMPLE REQUEST URL: http://localhost:3000/api/users?page=1
+// SAMPLE REQUEST BODY:
+// (nothing)
+// ---------------------------------------------------
+
+// SAMPLE RESPONSE:
+[
+    {
+        "_id": "5f7c0a7a833d80501f8f7f92",
+        "name": "John Connor",
+        "email": "the.savior@skynetistheworst.com",
+        "createdAt": "2020-10-06T06:11:06.418Z",
+        "updatedAt": "2020-10-06T08:57:00.102Z"
+    },
+    // { (possibly) more objects }
+]
+```
+
 
 
 
