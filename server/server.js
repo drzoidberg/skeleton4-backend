@@ -1,24 +1,21 @@
-const mongoose = require('mongoose');
+const express = require('express');
 
 const config = require('../config/config');
-const app = require('./express');
+const loaders = require('./loaders')
 
-/* configuring db connection */
-mongoose.connect(config.mongoUri, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-});
+startServer = () => {
 
-/* handling db connection error */
-mongoose.connection.on('error', () => {
-    throw new Error(`Server error. Unable to connect to database: ${config.mongoUri}`);
-});
+    /* loads the loaders */
+    const app = express();
+    loaders(app);
 
-/* launching the server */
-app.listen(config.projectPort, (error) => {
-    if (error) {
-        console.log(`Server error. Trying to listen to port ${config.projectPort}: ${error}`);
-    }
-    console.info(`Server started on port ${config.projectPort}`);
-});
+    /* launches the server */
+    app.listen(config.projectPort, (error) => {
+        if (error) {
+            console.log(`Server error. Trying to listen to port ${config.projectPort}: ${error}`);
+        }
+        console.info(`Server started on port ${config.projectPort}`);
+    });
+}
+
+startServer();
