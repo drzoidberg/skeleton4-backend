@@ -8,6 +8,7 @@ module.exports = (req, res) => {
 
     User
         .find()
+        .sort({ _id: -1 })                                  /* to sort documents by newest first */
         .skip(skip)                                         /* .skip & .limit serves as a  */
         .limit(PAGE_SIZE)
         .select('name email updatedAt createdAt')           /* selects specific fields you want to return in the response */
