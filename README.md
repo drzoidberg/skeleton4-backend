@@ -93,7 +93,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------- | :--------------
+:------ | :---: | :---: | :------: | :--------------
  *none* |       |       |          |
 
 ```javascript
@@ -119,7 +119,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------- | :--------------
+:------ | :---: | :---: | :------: | :--------------
  *none* |       |       |          |
 
 ```javascript
@@ -143,7 +143,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------- | :--------------
+:------ | :---: | :---: | :------: | :--------------
  *none* |       |       |          |
 
 ```javascript
@@ -174,7 +174,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------- | :--------------
+:------ | :---: | :---: | :------: | :--------------
  *none* |       |       |          |
 
 ```javascript
@@ -198,7 +198,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name   | Param | Query | Optional | Expected values
-:------ | :---: | :---: | :------- | :--------------
+:------ | :---: | :---: | :------: | :--------------
  *none* |       |       |          |
 
 ```javascript
@@ -223,7 +223,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name | Param | Query | Optional | Expected values
-:---- | :---: | :---: |:-------- |:---------------
+:---- | :---: | :---: | :------: | :--------------
  page |       |   ✓   |    ✓     | 1, 2, 9…
 
 ```javascript
@@ -251,8 +251,8 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 - Available params & query config requests
 
  Name | Param | Query | Optional | Expected values
-:---- | :---: | :---: |:-------- |:---------------
- id   |   ✓   |       |          |
+:---- | :---: | :---: | :------: | :--------------
+ id   |   ✓   |       |          | 5f7c0a7a833d80501f8f7f92
 
 ```javascript
 // SAMPLE REQUEST URL: http://localhost:3000/api/users?page=1
