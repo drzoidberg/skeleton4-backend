@@ -10,8 +10,11 @@ const authRoutes = require('../routes/auth.routes');
 const userRoutes = require('../routes/user.routes');
 const { manualCorsMiddleware, unauthorizedErrorMiddleware } = require('../middlewares');
 
-
 module.exports = ({ app }) => {
+
+    // parsing and encoding the body into json format
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     // singificantly compress the response bodies
     app.use(compress());
@@ -19,15 +22,12 @@ module.exports = ({ app }) => {
     // securing app by setting various HTTP headers
     app.use(helmet());
 
-    // HTTP request logger. Brings extra info to each http request each time a request is performed
-    app.use(morgan('dev'));
-
-    // parsing and encoding the body into json format
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
-
     // setting CORS manually
     app.use(manualCorsMiddleware);
+
+    // HTTP request logger. Brings extra info to each http request each time a request is performed
+    app.use(morgan('dev'));
+// setting CORS manually
 
     // serving statically images
     app.use('/uploads/images', express.static(path.join('uploads', 'images')));
