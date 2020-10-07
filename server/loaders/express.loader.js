@@ -13,10 +13,6 @@ const { manualCorsMiddleware, unauthorizedErrorMiddleware } = require('../middle
 
 module.exports = ({ app }) => {
 
-    // parsing and encoding the body into json format
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
-
     // singificantly compress the response bodies
     app.use(compress());
 
@@ -25,6 +21,10 @@ module.exports = ({ app }) => {
 
     // HTTP request logger. Brings extra info to each http request each time a request is performed
     app.use(morgan('dev'));
+
+    // parsing and encoding the body into json format
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     // setting CORS manually
     app.use(manualCorsMiddleware);

@@ -7,7 +7,8 @@ const User = require('../../models/user.model');
 sgMail.setApiKey(config.sendgridApiKey);
 
 module.exports = (req, res) => {
-    const { name, email, password } = req.body;
+    const user = req.body;
+    const { name, email, password } = user;
 
     User.findOne({ email: email }).exec((err, user) => {
         if (user) {

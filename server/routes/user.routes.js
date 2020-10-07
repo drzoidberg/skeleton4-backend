@@ -27,7 +27,6 @@ router.get('/user/:id',
 );
 
 router.get('/users/',
-    isAuthenticatedMiddleware,
     listController
 );
 
