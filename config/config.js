@@ -20,12 +20,12 @@ const config = {
     clientUrl:
         process.env.PROJECT_PROTOCOL &&
         process.env.PROJECT_IP &&
-        process.env.PROJECT_PORT
+        process.env.FRONTEND_PORT
         ?
             process.env.PROJECT_PROTOCOL +
             process.env.PROJECT_IP + ':' +
-            process.env.PROJECT_PORT
-        : 'http://localhost:3000',
+            process.env.FRONTEND_PORT
+        : 'http://localhost:5000',
                                 /* apply custom db config only if
                                     ALL .env fields are filled,
                                     otherwise use a default mongoUri */
