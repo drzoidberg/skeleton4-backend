@@ -6,11 +6,11 @@
 module.exports = (error, req, res, next) => {
     if (error.name === 'UnauthorizedError') {                           /* this kind of error is created by expressJwt */
         res.status(401).json({
-            unauthorizedError: error.name + ': ' + error.message,
+            unauthorizedError: error.message,
         });
     } else if (error) {
         res.status(400).json({
-            unauthorizedError: error.name + ': ' + error.message,
+            unauthorizedError: error.message,
         });
     }
 
