@@ -73,12 +73,12 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 
 ### For Users
  Method | Endpoint                | Authorization | Authentication | Action                                      | Expected data samples
-:------ |:------------------------------ | :-----------: | :------------: |:-------------------------------------------------- |:-----------------------------------------------------------------
- POST   | /api/signup             |               |                | Sign out                                    | [Go to sample](#post-slash-api-slash-signup)
+:------ |:----------------------- | :-----------: | :------------: |:------------------------------------------- |:----------------------------------------------------------
+ POST   | /api/signup             |               |                | Sign up                                     | [Go to sample](#post-slash-api-slash-signup)
  POST   | /api/account-activation |               |                | Activate the account (via email)            | [Go to sample](#post-slash-api-slash-account-activation)
  POST   | /api/signin             |               |                | Sign in                                     | [Go to sample](#post-slash-api-slash-signin)
- POST   | /api/forgot-password    |               |                | Request a password reset when logged in     | [Go to sample](#post-slash-api-slash-forgot-password)
- POST   | /api/reset-password     |               |                | Request a password reset when not logged in | [Go to sample](#post-slash-api-slash-reset-password)
+ POST   | /api/forgot-password    |               |                | Request a password reset when not logged in | [Go to sample](#post-slash-api-slash-forgot-password)
+ POST   | /api/reset-password     |               |                | Request a password reset when logged in     | [Go to sample](#post-slash-api-slash-reset-password)
  POST   | /api/google-login       |               |                | Log in / Sign up with a Google account      | [Go to sample](#post-slash-api-slash-google-login)
  GET    | /api/users              |               |       ✓        | List a fixed amount of users                | [Go to sample](#get-slash-api-slash-users)
  GET    | /api/user/:id           |               |       ✓        | Query info from a specific user             | [Go to sample](#get-slash-api-slash-user-id)
