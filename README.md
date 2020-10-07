@@ -79,6 +79,7 @@ mern-skeleton2-backend is an tiny backend application that supports user account
  POST   | /api/signin             |               |                | Sign in                                     | [Go to sample](#post-slash-api-slash-signin)
  POST   | /api/forgot-password    |               |                | Request a password reset when logged in     | [Go to sample](#post-slash-api-slash-forgot-password)
  POST   | /api/reset-password     |               |                | Request a password reset when not logged in | [Go to sample](#post-slash-api-slash-reset-password)
+ POST   | /api/google-login       |               |                | Log in / Sign up with a Google account      | [Go to sample](#post-slash-api-slash-google-login)
  GET    | /api/users              |               |       ✓        | List a fixed amount of users                | [Go to sample](#get-slash-api-slash-users)
  GET    | /api/user/:id           |               |       ✓        | Query info from a specific user             | [Go to sample](#get-slash-api-slash-user-id)
  PUT    | /api/user/update/:id    |       ✓       |       ✓        | Edit user                                   | [Go to sample](#put-slash-api-slash-user-slash-update-id)
@@ -212,6 +213,35 @@ mern-skeleton2-backend is an tiny backend application that supports user account
 // SAMPLE RESPONSE:
 {
     "message": "Password reset success. Now you can login with your new password"
+}
+```
+
+<!-- ------------------------------------------------------------------------------------------------------ -->
+
+**POST** <a id="post-slash-api-slash-google-login">/api/google-login/</a>
+- Available params & query config requests
+
+ Name   | Param | Query | Optional | Expected sample values
+:------ | :---: | :---: | :------: | :---------------------
+ *none* |       |       |          |
+
+```javascript
+// SAMPLE REQUEST URL: http://localhost:3000/api/google-login/
+// SAMPLE REQUEST BODY:
+{
+	"idToken": "generated token by Google"
+}
+// ---------------------------------------------------
+
+// SAMPLE RESPONSE:
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjdjMGE3YTgzM2Q4MDUwMWY4ZjdmOTIiLCJpYXQiOjE2MDE5NzQ2MzAsImV4cCI6MTYwMjU3OTQzMH0.CjfLdlafcpTJw6Eq5ZiAmGaNNqiPy5NlGvCzFkTyLFU",
+    "user": {
+        "_id": "5f7c0a7a833d80501f8f7f92",
+        "name": "Sarah Connor",
+        "email": "big.mommy@skynetistheworst.com",
+        "role": "user"
+    }
 }
 ```
 
