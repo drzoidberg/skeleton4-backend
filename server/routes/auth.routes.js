@@ -35,13 +35,13 @@ router.post('/signin',
 router.post('/account-activation',
     accountActivationController);
 
-router.post('/forgot-password',
+router.put('/forgot-password',
     forgotPasswordValidator,
     runValidationsMiddleware,
     forgotPasswordController
 );
 
-router.post('/reset-password',
+router.put('/reset-password',
     resetPasswordValidator,
     runValidationsMiddleware,
     resetPasswordController
