@@ -27,7 +27,6 @@ module.exports = ({ app }) => {
 
     // HTTP request logger. Brings extra info to each http request each time a request is performed
     app.use(morgan('dev'));
-// setting CORS manually
 
     // serving statically images
     app.use('/uploads/images', express.static(path.join('uploads', 'images')));
