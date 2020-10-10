@@ -31,9 +31,9 @@ router.get('/users/',
 );
 
 /* implement imageUploadMiddleware */
-router.put('/user/update/:id',
+router.put('/user/update/',
     isAuthenticatedMiddleware,
-    isAuthorizedMiddleware,
+    // isAuthorizedMiddleware,
     // imageUploadMiddleware.single('avatar'),
     userUpdateValidator,
     runValidationsMiddleware,
