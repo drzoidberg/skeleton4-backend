@@ -11,6 +11,7 @@ module.exports = (req, res) => {
                                                                             /* verifyIdToken method available in OAuth2Client.
                                                                                 Takes a token & an audience (clientId previously generated
                                                                                 in Google Cloud)  */
+                                                                                console.log(config.googleClientId);
     client.verifyIdToken({ idToken, audience: config.googleClientId })
         .then(response => {
             const { email_verified, name, email } = response.payload;           /* it exposes 'payload' key in the response,

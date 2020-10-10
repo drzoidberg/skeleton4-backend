@@ -1,5 +1,6 @@
 const bodyParser = require('body-parser');
 const compress = require('compression');
+const cors = require('cors');
 const express = require('express');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -22,8 +23,9 @@ module.exports = ({ app }) => {
     // securing app by setting various HTTP headers
     app.use(helmet());
 
-    // setting CORS manually
-    app.use(manualCorsMiddleware);
+    // // setting CORS manually
+    // app.use(manualCorsMiddleware);
+    app.use(cors());
 
     // HTTP request logger. Brings extra info to each http request each time a request is performed
     app.use(morgan('dev'));
