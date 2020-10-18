@@ -7,6 +7,6 @@ module.exports = [
         .not().isEmpty().withMessage('The email is required')
         .isEmail().withMessage('The email must be a valid email address'),
     check('password')
-        .isEmpty().withMessage('The password is required')
+        .not().isEmpty().withMessage('The password is required')
         .isLength({ min: 6 }).withMessage('The password must be at least 6 characters long'),
 ];

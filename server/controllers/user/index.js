@@ -1,8 +1,9 @@
-exports.getUserById = require('./getUserById.controller'),
-exports.getUserProfile = require('./getUserProfile.controller'),
-exports.listAllUsers = require('./listAllUsers.controller'),
-exports.loginUser = require('./loginUser.controller'),
-exports.registerUser = require('./registerUser.controller'),
-exports.removeUser = require('./removeUser.controller'),
-exports.updateUser = require('./updateUserProfile.controller'),
-exports.updateUserProfile = require('./updateUserProfile.controller')
+exports.listAllUsers = require('./listAllUsers.controller')
+exports.getUserById = require('./getUserById.controller')
+exports.getUserByToken = require('./getUserByToken.controller')
+exports.registerUser = require('./registerUser.controller')
+exports.loginUser = require('./loginUser.controller')
+exports.updateUserById = require('./updateUserById.controller')
+exports.updateUserByToken = require('./updateUserByToken.controller')
+exports.removeUserById = require('./removeUserById.controller')
+exports.removeUserByToken = require('./removeUserByToken.controller')

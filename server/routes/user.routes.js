@@ -28,15 +28,19 @@ router
     .route('/profile')
     .get(
         middlewares.isAuthorized,
-        validators.getUserProfile,
-        middlewares.runValidations,
-        controllers.getUserProfile
+        controllers.getUserByToken
     )
     .put(
         middlewares.isAuthorized,
-        validators.updateUserProfile,
+        validators.updateUserByToken,
         middlewares.runValidations,
-        controllers.updateUserProfile
+        controllers.updateUserByToken
+    )
+    .delete(
+        middlewares.isAuthorized,
+        // validators.removeUserByToken,
+        // middlewares.runValidations,
+        controllers.removeUserByToken
     )
 
 
@@ -54,23 +58,21 @@ router
     .get(
         middlewares.isAuthorized,
         middlewares.isAdmin,
-        validators.getUserById,
-        middlewares.runValidations,
         controllers.getUserById
     )
     .put(
         middlewares.isAuthorized,
         middlewares.isAdmin,
-        validators.updateUser,
+        validators.updateUserById,
         middlewares.runValidations,
-        controllers.updateUser
+        controllers.updateUserById
     )
     .delete(
         middlewares.isAuthorized,
         middlewares.isAdmin,
-        validators.removeUser,
+        validators.removeUserById,
         middlewares.runValidations,
-        controllers.removeUser
+        controllers.removeUserById
     )
 
 

@@ -1,4 +1,5 @@
 const asyncHandler = require('express-async-handler')
+const User = require('../../models/user.model')
 
 // @description Get all users
 // @route       GET /api/users

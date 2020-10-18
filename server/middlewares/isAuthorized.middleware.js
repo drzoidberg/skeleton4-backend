@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const asyncHandler = require('express-async-handler')
 const User = require('../models/user.model')
+const env = require('../config/env.config')
 
 module.exports = asyncHandler(async (req, res, next) => {
     let token
@@ -12,7 +13,7 @@ module.exports = asyncHandler(async (req, res, next) => {
         try {
             token = req.headers.authorization.split(' ')[1]
 
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+            const decoded = jwt.verify(token, env.jwtSecret)
 
             req.user = await User.findById(decoded.id).select('-password')
 
@@ -20,12 +21,12 @@ module.exports = asyncHandler(async (req, res, next) => {
         } catch (error) {
             console.error(error)
             res.status(401)
-            throw new Error('Not authorized, token failed')
+            throw new Error('Not authorized. Token failed')
         }
     }
 
     if (!token) {
         res.status(401)
-        throw new Error('Not authorized, no token')
+        throw new Error('Not authorized. No embedded token in request message')
     }
 })

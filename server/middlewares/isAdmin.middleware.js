@@ -3,6 +3,6 @@ module.exports = (req, res, next) => {
         next()
     } else {
         res.status(401)
-        throw new Error('Not authorized as an admin')
+        throw new Error(`Not authorized. You don't have admin privileges`)
     }
 }

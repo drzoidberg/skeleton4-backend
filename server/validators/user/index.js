@@ -1,7 +1,6 @@
-exports.getUserById = require('./getUserById.validator'),
-exports.getUserProfile = require('./getUserProfile.validator'),
-exports.loginUser = require('./loginUser.validator'),
-exports.registerUser = require('./registerUser.validator'),
-exports.removeUser = require('./removeUser.validator'),
-exports.updateUser = require('./updateUserProfile.validator'),
-exports.updateUserProfile = require('./updateUserProfile.validator')
+exports.registerUser = require('./registerUser.validator')
+exports.loginUser = require('./loginUser.validator')
+exports.updateUserById = require('./updateUserById.validator')
+exports.updateUserByToken = require('./updateUserByToken.validator')
+exports.removeUserById = require('./removeUserById.validator')
+exports.removeUserByToken = require('./removeUserByToken.validator')
