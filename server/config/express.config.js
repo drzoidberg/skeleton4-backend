@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser')
 const compress = require('compression')
 const express = require('express')
 const helmet = require('helmet')
@@ -6,19 +5,14 @@ const morgan = require('morgan')
 const path = require('path')
 
 const Template = require('../../template')
-const authRoutes = require('../routes/auth.routes')
 const userRoutes = require('../routes/user.routes')
-const {
-    manualCorsMiddleware,
-    notFoundMiddleware,
-    errorHandlerMiddleware
-} = require('../middlewares')
+const middlewares = require('../middlewares')
 
 module.exports = ({ app }) => {
 
     // parsing and encoding the body into json format
-    app.use(bodyParser.json())
-    app.use(bodyParser.urlencoded({ extended: true }))
+    app.use(express.json())
+    app.use(express.urlencoded({ extended: true }))
 
     // singificantly compress the response bodies
     app.use(compress())
@@ -27,7 +21,7 @@ module.exports = ({ app }) => {
     app.use(helmet())
 
     // // setting CORS manually
-    app.use(manualCorsMiddleware)
+    app.use(middlewares.manualCors)
 
     // HTTP request logger. Brings extra info to each http request each time a request is performed
     app.use(morgan('dev'))
@@ -46,8 +40,8 @@ module.exports = ({ app }) => {
     })
 
     // it triggers when no other error in the app has been triggered
-    app.use(notFoundMiddleware)
-    app.use(errorHandlerMiddleware)
+    app.use(middlewares.notFound)
+    app.use(middlewares.errorHandler)
 
     // must return the app if we use loaders
     return app
