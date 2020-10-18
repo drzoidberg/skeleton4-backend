@@ -1,21 +1,21 @@
 const express = require('express')
 const colors = require('colors')
 
-const config = require('./config/env.config')
-const loaders = require('./config')
+const env = require('./config/env.config')
+const config = require('./config')
 
 startServer = () => {
 
-    /* loads the config loaders */
+    /* loads the rest of the configs */
     const app = express()
-    loaders(app)
+    config(app)
 
     /* launches the server */
-    app.listen(config.projectPort, (error) => {
+    app.listen(env.projectPort, (error) => {
         if (error) {
-            console.log(`Server error. Trying to listen to port ${config.projectPort}: ${error}`.red.bold)
+            console.log(`Server error. Trying to listen to port ${env.projectPort}: ${error}`.red.bold)
         }
-        console.info(`Server started on port ${config.projectPort}`.yellow.bold)
+        console.info(`Server started on port ${env.projectPort}`.yellow)
     })
 }
 

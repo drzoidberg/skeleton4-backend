@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 const colors = require('colors')
 
-const config = require('./env.config')
+const env = require('./env.config')
 
 module.exports = async () => {
     try {
         /* configuring db connection */
-        const conn = await mongoose.connect(config.mongoUri, {
+        const conn = await mongoose.connect(env.mongoUri, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useUnifiedTopology: true,
@@ -16,7 +16,7 @@ module.exports = async () => {
         /* handling db connection error */
         mongoose.connection.on('error', () => {
             throw new Error(
-                `Server error. Unable to connect to database: ${config.mongoUri}`
+                `Server error. Unable to connect to database: ${env.mongoUri}`
             )
         })
 

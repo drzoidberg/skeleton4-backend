@@ -1,4 +1,4 @@
-const config = require('./server/config/env.config');
+const env = require('./server/config/env.config');
 
 module.exports = () => {
     return `
@@ -7,7 +7,7 @@ module.exports = () => {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>👋🏼 Hello from ${config.projectTitle}</title>
+        <title>👋🏼 Hello from ${env.projectTitle}</title>
         <style>
             body {
                 background-color: #111;
@@ -36,7 +36,7 @@ module.exports = () => {
     </head>
     <body>
         <div class="container">
-            <h1>👋🏼 Hello from <span class="highlight">${config.projectTitle}!</span></h1>
+            <h1>👋🏼 Hello from <span class="highlight">${env.projectTitle}!</span></h1>
             <p><em>Please check the API endpoints in the project documentation</em></p>
         </div>
     </body>

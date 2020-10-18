@@ -4,7 +4,9 @@
     "description": "",
     "main": "server/server.js",
     "scripts": {
-        "development": "nodemon -r dotenv/config"
+        "development": "nodemon -r dotenv/config",
+        "data:import": "node -r dotenv/config server/seeders/",
+        "data:destroy": "node -r dotenv/config server/seeders/ -d"
     },
     "keywords": [],
     "author": "Jorge Vicens Valor",
