@@ -1,4 +1,4 @@
-# mern-skeleton4-backend
+# mern-skeleton2-backend
 
 ### Table of Contents
 
@@ -15,7 +15,7 @@
 
 ## 📦 Description
 
-mern-skeleton4-backend is an tiny backend application that supports user accounts
+mern-skeleton2-backend is an tiny backend application that supports user accounts
 
 
 
@@ -395,11 +395,11 @@ mern-skeleton4-backend is an tiny backend application that supports user account
 
 ## 🛠 Installation
 
-Use the node package manager [npm](https://npmjs.com/) to install mern-skeleton4-backend.
+Use the node package manager [npm](https://npmjs.com/) to install mern-skeleton2-backend.
 
 ```javascript
 // use npm or yarn package managers
-cd ./mern-skeleton4-backend
+cd ./mern-skeleton2-backend
 yarn install
 ```
 
@@ -419,5 +419,5 @@ Project done using as a guideline the book [Full Stack React Projects, Second Ed
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
 
 
-### [▲ Go UP](#mern-skeleton4-backend)
+### [▲ Go UP](#mern-skeleton2-backend)
 
