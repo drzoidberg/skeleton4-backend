@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler')
-const User = require('../models/user.model')
+const User = require('../../models/user.model')
 
 // @description Remove user
 // @route       DELETE /api/users/:id

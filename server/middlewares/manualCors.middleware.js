@@ -1,4 +1,4 @@
-const config = require('../../config/config');
+const config = require('../config/env.config');
 
 // setting http headers for allowing only a different origin: the one specified in the .env file
 module.exports = (req, res, next) => {

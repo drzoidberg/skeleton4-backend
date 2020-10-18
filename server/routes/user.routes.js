@@ -35,7 +35,6 @@ router
     .route('/')
     .post(controllers.registerUser)
     .get(
-        validators.listAllUsers,
         middlewares.isAuthorized,
         middlewares.isAdmin,
         controllers.listAllUsers

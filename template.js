@@ -1,4 +1,4 @@
-const config = require('./config/config');
+const config = require('./server/config/env.config');
 
 module.exports = () => {
     return `

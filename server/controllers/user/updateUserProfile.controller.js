@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const generateToken = require('../../lib/generateToken')
-const User = require('../models/user.model')
+const User = require('../../models/user.model')
 
 // @description Update user profile
 // @route       PUT /api/users/profile

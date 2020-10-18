@@ -1,4 +1,5 @@
 const compress = require('compression')
+const colors = require('colors')
 const express = require('express')
 const helmet = require('helmet')
 const morgan = require('morgan')
@@ -43,6 +44,7 @@ module.exports = ({ app }) => {
     app.use(middlewares.notFound)
     app.use(middlewares.errorHandler)
 
+    console.log('Express Initialized'.yellow);
     // must return the app if we use loaders
     return app
 }

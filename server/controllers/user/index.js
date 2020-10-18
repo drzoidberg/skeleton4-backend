@@ -5,4 +5,4 @@ exports.loginUser = require('./loginUser.controller'),
 exports.registerUser = require('./registerUser.controller'),
 exports.removeUser = require('./removeUser.controller'),
 exports.updateUser = require('./updateUserProfile.controller'),
-exports.updateUserProfile = require('./updateUserProfile.controller'),
+exports.updateUserProfile = require('./updateUserProfile.controller')
