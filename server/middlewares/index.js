@@ -1,9 +1,7 @@
-module.exports = {
-    imageUploadMiddleware: require('./imageUpload.middleware'),
-    // isAdminMiddleware: require('./isAdmin.middleware'),
-    // isAuthenticatedMiddleware: require('./isAuthenticated.middleware'),
-    // isAuthorizedMiddleware: require('./isAuthorized.middleware'),
-    // manualCorsMiddleware: require('./manualCors.middleware'),
-    // runValidationsMiddleware: require('./runValidations.middleware'),
-    // unauthorizedErrorMiddleware: require('./unauthorizedError.middleware')
-}
+exports.imageUpload = require('./imageUpload.middleware'),
+exports.isAdmin = require('./isAdmin.middleware'),
+exports.isAuthorized = require('./isAuthorized.middleware'),
+exports.manualCors = require('./manualCors.middleware'),
+exports.runValidations = require('./runValidations.middleware'),
+exports.errorHandler = require('./errorHandler.middleware'),
+exports.notFound = require('./notFound.middleware')
