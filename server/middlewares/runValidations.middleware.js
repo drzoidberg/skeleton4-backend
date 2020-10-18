@@ -7,7 +7,9 @@ module.exports = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res
-            .status(422)
+            .status(422)                                    /* The server understands the content type of the request entity,
+                                                                and the syntax of the request entity is correct,
+                                                                but was unable to process the contained instructions. */
             .json({
                 runValidationsError: errors.array()[0].msg
             });

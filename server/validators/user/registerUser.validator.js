@@ -2,11 +2,11 @@ const { check } = require('express-validator');
 
 module.exports = [
     check('name')
-        .not().isEmpty().withMessage('Name is required'),
+        .not().isEmpty().withMessage('The name is required'),
     check('email')
-        .not().isEmpty().withMessage('The email field must be filled')
-        .isEmail().withMessage('Must be a valid email address'),
+        .not().isEmpty().withMessage('The email is required')
+        .isEmail().withMessage('The email must be a valid email address'),
     check('password')
-        .isEmpty().withMessage('The password field must be filled')
-        .isLength({ min: 6 }).withMessage('Password must be at least 6 characters long'),
+        .isEmpty().withMessage('The password is required')
+        .isLength({ min: 6 }).withMessage('The password must be at least 6 characters long'),
 ];

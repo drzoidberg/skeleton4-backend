@@ -10,22 +10,32 @@ const router = express.Router()
 router
     .route('/')
     .post(
-        validators.loginUser,
-        controllers.loginUser
+        validators.registerUser,
+        middlewares.runValidations,
+        controllers.registerUser
     )
 
+router
+    .route('/login')
+    .post(
+        validators.loginUser,
+        middlewares.runValidations,
+        controllers.loginUser
+    )
 
 // PROTECTED ROUTES
 router
     .route('/profile')
     .get(
-        validators.getUserProfile,
         middlewares.isAuthorized,
+        validators.getUserProfile,
+        middlewares.runValidations,
         controllers.getUserProfile
     )
     .put(
-        validators.updateUserProfile,
         middlewares.isAuthorized,
+        validators.updateUserProfile,
+        middlewares.runValidations,
         controllers.updateUserProfile
     )
 
@@ -33,7 +43,6 @@ router
 // ADMIN ROUTES
 router
     .route('/')
-    .post(controllers.registerUser)
     .get(
         middlewares.isAuthorized,
         middlewares.isAdmin,
@@ -43,22 +52,26 @@ router
 router
     .route('/:id')
     .get(
-        validators.getUserById,
         middlewares.isAuthorized,
         middlewares.isAdmin,
+        validators.getUserById,
+        middlewares.runValidations,
         controllers.getUserById
     )
     .put(
-        validators.updateUser,
         middlewares.isAuthorized,
         middlewares.isAdmin,
+        validators.updateUser,
+        middlewares.runValidations,
         controllers.updateUser
     )
     .delete(
-        validators.removeUser,
         middlewares.isAuthorized,
         middlewares.isAdmin,
+        validators.removeUser,
+        middlewares.runValidations,
         controllers.removeUser
     )
+
 
 module.exports = router
