@@ -31,18 +31,18 @@ router.get('/users/',
 );
 
 /* implement imageUploadMiddleware */
-router.put('/user/update/',
+router.put('/user/update/:id',
     isAuthenticatedMiddleware,
     // isAuthorizedMiddleware,
     // imageUploadMiddleware.single('avatar'),
-    userUpdateValidator,
-    runValidationsMiddleware,
+    // userUpdateValidator,
+    // runValidationsMiddleware,
     updateController
 );
 
 router.delete('/user/:id',
     isAuthenticatedMiddleware,
-    isAuthorizedMiddleware,
+    // isAuthorizedMiddleware,
     removeController
 );
 
