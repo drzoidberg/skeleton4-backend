@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
                                                                 and the syntax of the request entity is correct,
                                                                 but was unable to process the contained instructions. */
             .json({
-                error: errors.array()[0].msg
+                message: errors.array()[0].msg
             });
     }
     next();
