@@ -11,8 +11,7 @@ module.exports = asyncHandler(async (req, res) => {
     if (user) {
         user.name = req.body.name || user.name
         user.email = req.body.email || user.email
-        user.password = req.body.password || user.password
-        user.isAdmin = req.body.isAdmin || user.isAdmin
+        user.isAdmin = req.body.isAdmin
 
         const updatedUser = await user.save()
 
@@ -27,4 +26,3 @@ module.exports = asyncHandler(async (req, res) => {
         throw new Error('User not found')
     }
 })
-
