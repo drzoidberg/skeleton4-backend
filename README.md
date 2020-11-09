@@ -1,4 +1,4 @@
-# mern-skeleton2-backend
+# skeleton2-backend
 
 ### Table of Contents
 
@@ -15,7 +15,7 @@
 
 ## 📦 Description
 
-mern-skeleton2-backend is an tiny backend application that supports user accounts
+skeleton2-backend is an tiny backend application that supports user accounts
 
 
 
